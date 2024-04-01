@@ -11,20 +11,12 @@
 
 using namespace std;
 
-// default constructor for socket of (subclassed) domain and type
-//! \param[in] domain is as described in [socket(7)](\ref man7::socket),
-//! probably `AF_INET` or `AF_UNIX` \param[in] type is as described in
-//! [socket(7)](\ref man7::socket)
+// 默认构造，调用sys/socket.h的库函数
 Socket::Socket(const int domain, const int type, const int protocol)
     : FileDescriptor(
           ::CheckSystemCall("socket", socket(domain, type, protocol))) {}
 
-// construct from file descriptor
-//! \param[in] fd is the FileDescriptor from which to construct
-//! \param[in] domain is `fd`'s domain; throws std::runtime_error if wrong value
-//! is supplied \param[in] type is `fd`'s type; throws std::runtime_error if
-//! wrong value is supplied \param[in] protocol is `fd`'s protocol; throws
-//! std::runtime_error if wrong value is supplied
+// 从给定的文件描述符构造 socket，并验证其域、类型和协议是否匹配
 Socket::Socket(FileDescriptor&& fd,
                int domain,
                int type,
@@ -52,10 +44,8 @@ Socket::Socket(FileDescriptor&& fd,
     }
 }
 
-// get the local or peer address the socket is connected to
-//! \param[in] name_of_function is the function to call (string passed to
-//! CheckSystemCall()) \param[in] function is a pointer to the function \returns
-//! the requested Address
+// 获取本地地址或对等端地址
+// 具体用法看下面两个函数就知道了
 Address Socket::get_address(
     const string& name_of_function,
     const function<int(int, sockaddr*, socklen_t*)>& function) const {
@@ -67,18 +57,18 @@ Address Socket::get_address(
     return Address{address, size};
 }
 
-//! \returns the local Address of the socket
+//! \returns 本地地址
 Address Socket::local_address() const {
     return get_address("getsockname", getsockname);
 }
 
-//! \returns the socket's peer's Address
+//! \returns 对等端地址
 Address Socket::peer_address() const {
     return get_address("getpeername", getpeername);
 }
 
-// bind socket to a specified local address (usually to listen/accept)
-//! \param[in] address is a local Address to bind
+// 绑定到指定的本地地址(usually to listen/accept)
+//! \param[in] address 本地地址
 void Socket::bind(const Address& address) {
     CheckSystemCall("bind", ::bind(fd_num(), address, address.size()));
 }
@@ -87,15 +77,14 @@ void Socket::bind_to_device(const string_view device_name) {
     setsockopt(SOL_SOCKET, SO_BINDTODEVICE, device_name);
 }
 
-// connect socket to a specified peer address
-//! \param[in] address is the peer's Address
+// 连接到对等端
+//! \param[in] address 对等端地址
 void Socket::connect(const Address& address) {
     CheckSystemCall("connect", ::connect(fd_num(), address, address.size()));
 }
 
-// shut down a socket in the specified way
-//! \param[in] how can be `SHUT_RD`, `SHUT_WR`, or `SHUT_RDWR`; see
-//! [shutdown(2)](\ref man2::shutdown)
+// 以指定方式关闭套接字
+//! \param[in] how can be `SHUT_RD`, `SHUT_WR`, or `SHUT_RDWR`
 void Socket::shutdown(const int how) {
     CheckSystemCall("shutdown", ::shutdown(fd_num(), how));
     switch (how) {
@@ -151,14 +140,13 @@ void DatagramSocket::send(const string_view payload) {
     register_write();
 }
 
-// mark the socket as listening for incoming connections
-//! \param[in] backlog is the number of waiting connections to queue (see
-//! [listen(2)](\ref man2::listen))
+// 将套接字标记为侦听传入连接
+//! \param[in] backlog is the number of waiting connections to queue
 void TCPSocket::listen(const int backlog) {
     CheckSystemCall("listen", ::listen(fd_num(), backlog));
 }
 
-// accept a new incoming connection
+// 接受新的传入连接
 //! \returns a new TCPSocket connected to the peer.
 //! \note This function blocks until a new connection is available
 TCPSocket TCPSocket::accept() {
@@ -167,7 +155,7 @@ TCPSocket TCPSocket::accept() {
         CheckSystemCall("accept", ::accept(fd_num(), nullptr, nullptr))));
 }
 
-// get socket option
+// 获取套接字选项
 template <typename option_type>
 socklen_t Socket::getsockopt(const int level,
                              const int option,
@@ -178,7 +166,7 @@ socklen_t Socket::getsockopt(const int level,
     return optlen;
 }
 
-// set socket option
+// 设置套接字选项
 //! \param[in] level The protocol level at which the argument resides
 //! \param[in] option A single option to set
 //! \param[in] option_value The value to set

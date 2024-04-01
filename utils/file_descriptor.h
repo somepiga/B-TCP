@@ -92,7 +92,6 @@ class FileDescriptor {
     unsigned int read_count() const { return internal_fd_->read_count_; }
     unsigned int write_count() const { return internal_fd_->write_count_; }
 
-    // Copy/move constructor/assignment operators
     // FileDescriptor 可以移动，但不能隐式复制( 参见duplicate() )
     FileDescriptor(const FileDescriptor& other) = delete;
     FileDescriptor& operator=(const FileDescriptor& other) = delete;

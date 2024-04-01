@@ -9,18 +9,20 @@
 #include <string_view>
 
 //! \brief 基类
+// Socket里面的所有基本函数都是通过调用 FDWrapper 的系统函数实现的
+// 通过自定义的 CheckSystemCall 中间函数
 class Socket : public FileDescriptor {
    private:
-    //! Get the local or peer address the socket is connected to
+    //! 获取套接字连接到的本地或对等地址
     Address get_address(
         const std::string& name_of_function,
         const std::function<int(int, sockaddr*, socklen_t*)>& function) const;
 
    protected:
-    //! Construct via [socket(2)](\ref man2::socket)
+    //! 默认系统构造
     Socket(int domain, int type, int protocol = 0);
 
-    //! Construct from a file descriptor.
+    //! 从文件描述符构造
     Socket(FileDescriptor&& fd, int domain, int type, int protocol = 0);
 
     //! Wrapper around [getsockopt(2)](\ref man2::getsockopt)
@@ -118,10 +120,16 @@ class PacketSocket : public DatagramSocket {
     void set_promiscuous();
 };
 
-//! A wrapper around [Unix-domain stream sockets](\ref man7::unix)
+//! A wrapper around [Unix-domain stream sockets]
+/* Unix-domain stream sockets，简称UDS（UNIX Domain
+ * Sockets），是一种在同一台机器上进行进程间通信（IPC: Inter-Process
+ * Communication）的可靠的IPC机制。它不需要经过网络协议栈，
+ * 不需要打包拆包、计算校验和、维护序号和应答等，
+ * 只是将应用层数据从一个进程拷贝到另一个进程。
+ */
 class LocalStreamSocket : public Socket {
    public:
-    //! Construct from a file descriptor
+    //! 从文件描述符构造
     explicit LocalStreamSocket(FileDescriptor&& fd)
         : Socket(std::move(fd), AF_UNIX, SOCK_STREAM) {}
 };

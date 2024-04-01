@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24.2)
 
-project(B-TCP CXX)
+project(minnow CXX)
 
 if(${CMAKE_GENERATOR} STREQUAL "Unix Makefiles")
   set(CMAKE_MAKE_PROGRAM "${PROJECT_SOURCE_DIR}/scripts/make-parallel.sh" CACHE STRING "" FORCE)
@@ -12,7 +12,7 @@ endif()
 
 include(etc/build_type.cmake)
 include(etc/cflags.cmake)
-# include(etc/scanners.cmake)
+include(etc/scanners.cmake)
 # include(etc/tests.cmake)
 
 include_directories("${PROJECT_SOURCE_DIR}/utils")

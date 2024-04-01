@@ -38,7 +38,7 @@ class EventLoop {
     };
 
     struct FDRule : public BasicRule {
-        FileDescriptor fd;    //!< 用于监视活动的 FileDescriptor.
+        FileDescriptor fd;    // 用于监视活动的 FileDescriptor.
         Direction direction;  //!< Direction::In for reading from fd,
                               //!< Direction::Out for writing to fd.
         CallbackT cancel;   //!< 取消规则时调用的回调 (e.g. on hangup)
@@ -62,12 +62,11 @@ class EventLoop {
    public:
     EventLoop() { _rule_categories.reserve(64); }
 
-    //! Returned by each call to EventLoop::wait_next_event.
+    // EventLoop::wait_next_event的返回值
     enum class Result {
-        Success,  //!< At least one Rule was triggered.
-        Timeout,  //!< No rules were triggered before timeout.
-        Exit  //!< All rules have been canceled or were uninterested; make no
-              //!< further calls to EventLoop::wait_next_event.
+        Success,  // 至少触发了一项规则
+        Timeout,  // 超时之前没有触发任何规则
+        Exit  // 所有规则已被取消或不感兴趣；不再调用EventLoop::wait_next_event。
     };
 
     size_t add_category(const std::string& name);
@@ -101,7 +100,7 @@ class EventLoop {
     //! ready fd.
     Result wait_next_event(int timeout_ms);
 
-    // convenience function to add category and rule at the same time
+    // 同时添加类别和规则的便捷功能
     template <typename... Targs>
     auto add_rule(const std::string& name, Targs&&... Fargs) {
         return add_rule(add_category(name), std::forward<Targs>(Fargs)...);
