@@ -1,0 +1,5 @@
+set(BROWSER_SIMULATOR_SOURCES BrowserSimulator.cpp)
+add_executable(BrowserSimulator ${BROWSER_SIMULATOR_SOURCES})
+
+target_link_libraries(BrowserSimulator B-TCP pthread)
+set_target_properties(BrowserSimulator PROPERTIES OUTPUT_NAME BrowserSimulator)

@@ -1,9 +1,22 @@
-file(GLOB LIB_SOURCES "*.cpp")
+add_subdirectory(buffer)
+add_subdirectory(connect)
+add_subdirectory(datagram)
+add_subdirectory(tun)
+add_subdirectory(utils)
 
-add_library(minnow_debug STATIC ${LIB_SOURCES})
+add_library(B-TCP STATIC ${ALL_OBJECT_FILES})
 
-add_library(minnow_sanitized EXCLUDE_FROM_ALL STATIC ${LIB_SOURCES})
-target_compile_options(minnow_sanitized PUBLIC ${SANITIZING_FLAGS})
+set(BUSTUB_LIBS
+        B-TCP_buffer
+        B-TCP_connect
+        B-TCP_datagram
+        B-TCP_tun
+        B-TCP_utils)
 
-add_library(minnow_optimized EXCLUDE_FROM_ALL STATIC ${LIB_SOURCES})
-target_compile_options(minnow_optimized PUBLIC "-O2")
+target_link_libraries(
+        B-TCP
+        ${BUSTUB_LIBS})
+
+target_include_directories(
+        B-TCP PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
