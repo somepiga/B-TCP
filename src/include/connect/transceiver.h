@@ -8,25 +8,25 @@
 #include "datagram/tcp_message.h"
 #include "reassembler.h"
 
+/**
+ * @brief 收发器
+ */
 class Transceiver {
   /* 发送端 */
  private:
   Wrap32 send_isn_;
 
-  // 重传时间
-  uint64_t initial_RTO_ms_;
+  uint64_t initial_RTO_ms_;  //!< 重传时间
   uint16_t _rto_factor{1};
   uint64_t _ms_since_last_ticked{};
 
-  // 重传次数
-  uint64_t consecutive_retransmissions_{};
+  uint64_t consecutive_retransmissions_{};  //!< 重传次数
 
-  // 用于请求对方数据的包  待发送队列
-  std::queue<uint64_t> isn_send_queue_;
-  std::map<uint64_t, TCPSenderMessage> _messages;  // abs seqno to message
+  std::queue<uint64_t> isn_send_queue_;  //!< 用于请求对方数据的包  待发送队列
+  std::map<uint64_t, TCPSenderMessage> _messages;  //!< 绝对序列号
   uint64_t _popped_bytes{};  // use bytes_popped() to get abs seqno
-  bool _started{};           // mark SYN written
-  bool _finished{};          // mark FIN written
+  bool _started{};
+  bool _finished{};
   uint64_t _last_ackno{};
   uint64_t _window_size{1};  // as said in FAQ (for back off RTO)
 

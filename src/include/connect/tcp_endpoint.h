@@ -6,10 +6,13 @@
 #include "connect/transceiver.h"
 #include "datagram/tcp_message.h"
 
+/**
+ * @brief TCPSocket 的一端
+ */
 class TCPEndpoint {
-  TCPConfig cfg_;
-  Transceiver transceiver_{cfg_.rt_timeout, cfg_.fixed_isn};
-  Reassembler reassembler_{};
+  TCPConfig cfg_;                                             //!< 配置内容
+  Transceiver transceiver_{cfg_.rt_timeout, cfg_.fixed_isn};  //!< 收发器
+  Reassembler reassembler_{};                                 //!< 流重组器
 
   StreamBuffer outbound_stream_{cfg_.send_capacity},
       inbound_stream_{cfg_.recv_capacity};
@@ -46,11 +49,8 @@ class TCPEndpoint {
       return;
     }
 
-    // Give incoming TCPReceiverMessage to sender.
     transceiver_.receive_ack(seg.receiver_message);
 
-    // Give incoming TCPSenderMessage to receiver.
-    // If SenderMessage is non-empty or a keep-alive, make sure to reply.
     need_send_ |= (seg.sender_message.sequence_length() > 0);
     const auto our_ackno =
         transceiver_.send_ack(inbound_stream_.writer()).ackno;
@@ -62,16 +62,12 @@ class TCPEndpoint {
   }
 
   std::optional<TCPSegment> maybe_send() {
-    // Get outgoing TCPReceiverMessage from receiver.
     auto receiver_msg = transceiver_.send_ack(inbound_stream_.writer());
 
-    // If connection is alive, push stream to TCPSender.
     if (receiver_msg.ackno.has_value()) {
       push();
     }
 
-    // Get (possible) outgoing TCPSenderMessage, using empty message if we need
-    // to send something.
     auto sender_msg = transceiver_.maybe_send();
 
     if (need_send_ and not sender_msg.has_value()) {
@@ -80,7 +76,6 @@ class TCPEndpoint {
 
     need_send_ = false;
 
-    // Send the segment
     if (sender_msg.has_value()) {
       return TCPSegment{sender_msg.value(), receiver_msg,
                         outbound_stream_.reader().has_error() or

@@ -2,21 +2,20 @@
 
 #include <cstdint>
 
-/*
- * The Wrap32 type represents a 32-bit unsigned integer that:
- *    - starts at an arbitrary "zero point" (initial value), and
- *    - wraps back to zero when it reaches 2^32 - 1.
+/**
+ * @brief 转换绝对序列号和相对序列号
+ * Wrap32 类型表示 32 位无符号整数
+ *  - 从任意"零点"（初始值）开始
+ *  - 当达到 2^32 - 1 时回绕到零
  */
-
 class Wrap32 {
  protected:
-  uint32_t raw_value_{};  // absoluate seqno offset in uint32
+  uint32_t raw_value_{};  //!< 绝对序列号 (uint32)
 
  public:
   explicit Wrap32(uint32_t raw_value) : raw_value_(raw_value) {}
 
-  /* Construct a Wrap32 given an absolute sequence number n and the zero point.
-   */
+  //!< 给定绝对序列号 n 和零点，构造一个 Wrap32
   static Wrap32 wrap(uint64_t n, Wrap32 zero_point);
 
   /*

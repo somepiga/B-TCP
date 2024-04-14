@@ -90,7 +90,6 @@ void Transceiver::push(Reader& outbound_stream) {
 }
 
 TCPSenderMessage Transceiver::send_empty_message() const {
-  // Your code here.
   return {.seqno = send_isn_ + _started + _popped_bytes + _finished};
 }
 

@@ -13,7 +13,7 @@
 #include <string>
 #include <utility>
 
-// #include "network_interface.hh"
+#include "polling/rule.h"
 #include "tun/tun.h"
 #include "utils/exception.h"
 #include "utils/parser.h"
@@ -35,7 +35,7 @@ void TCPSocket<AdaptT>::_tcp_loop(const function<bool()>& condition) {
   auto base_time = timestamp_ms();
   while (condition()) {
     auto ret = _eventloop.wait_next_event(TCP_TICK_MS);
-    if (ret == EventLoop::Result::Exit or _abort) {
+    if (ret == Result::Exit or _abort) {
       break;
     }
 
@@ -59,10 +59,11 @@ void TCPSocket<AdaptT>::_tcp_loop(const function<bool()>& condition) {
 template <typename AdaptT>
 TCPSocket<AdaptT>::TCPSocket(
     pair<FileDescriptor, FileDescriptor> data_socket_pair,
-    AdaptT&& datagram_interface)
+    AdaptT&& datagram_interface, EventEpoll&& eventloop)
     : Socket(std::move(data_socket_pair.first), AF_UNIX, SOCK_STREAM),
       _thread_data(std::move(data_socket_pair.second), AF_UNIX, SOCK_STREAM),
-      _datagram_adapter(std::move(datagram_interface)) {
+      _datagram_adapter(std::move(datagram_interface)),
+      _eventloop(std::move(eventloop)) {
   _thread_data.set_blocking(false);
   set_blocking(false);
 }
@@ -189,9 +190,10 @@ static inline pair<FileDescriptor, FileDescriptor> socket_pair_helper(
 //! \param[in] datagram_interface is the underlying interface (e.g. to UDP, IP,
 //! or Ethernet)
 template <typename AdaptT>
-TCPSocket<AdaptT>::TCPSocket(AdaptT&& datagram_interface)
-    : TCPSocket(socket_pair_helper(SOCK_STREAM),
-                std::move(datagram_interface)) {}
+TCPSocket<AdaptT>::TCPSocket(AdaptT&& datagram_interface,
+                             EventEpoll&& eventloop)
+    : TCPSocket(socket_pair_helper(SOCK_STREAM), std::move(datagram_interface),
+                std::move(eventloop)) {}
 
 template <typename AdaptT>
 TCPSocket<AdaptT>::~TCPSocket() {
@@ -211,7 +213,7 @@ template <typename AdaptT>
 void TCPSocket<AdaptT>::wait_until_closed() {
   shutdown(SHUT_RDWR);
   if (_tcp_thread.joinable()) {
-    cerr << "DEBUG: Waiting for clean shutdown... ";
+    cerr << "Waiting for clean shutdown... ";
     _tcp_thread.join();
     cerr << "done.\n";
   }
@@ -230,7 +232,8 @@ void TCPSocket<AdaptT>::connect(const TCPConfig& c_tcp,
 
   _datagram_adapter.config_mut() = c_ad;
 
-  cerr << "DEBUG: Connecting to " << c_ad.destination.to_string() << "...\n";
+  cerr << "\033[1;32mConnecting to " << c_ad.destination.to_string()
+       << " ...\n\033[0m";
 
   if (not _tcp.has_value()) {
     throw runtime_error("TCPPeer not successfully initialized");
@@ -248,10 +251,11 @@ void TCPSocket<AdaptT>::connect(const TCPConfig& c_tcp,
   _tcp_loop(
       [&] { return _tcp->transceiver().sequence_numbers_in_flight() == 1; });
   if (not _tcp->inbound_reader().has_error()) {
-    cerr << "Successfully connected to " << c_ad.destination.to_string()
-         << ".\n";
+    cerr << "\033[1;32mSuccessfully connected to "
+         << c_ad.destination.to_string() << ".\n\033[0m";
   } else {
-    cerr << "Error on connecting to " << c_ad.destination.to_string() << ".\n";
+    cerr << "\033[1;31mError on connecting to " << c_ad.destination.to_string()
+         << ".\n\033[0m";
   }
 
   _tcp_thread = thread(&TCPSocket::_tcp_main, this);
@@ -272,13 +276,13 @@ void TCPSocket<AdaptT>::listen_and_accept(const TCPConfig& c_tcp,
   _datagram_adapter.config_mut() = c_ad;
   _datagram_adapter.set_listening(true);
 
-  cerr << "DEBUG: Listening for incoming connection...\n";
+  cerr << "\033[1;32mListening for incoming connection...\n\033[0m";
   _tcp_loop([&] {
     return (not _tcp->has_ackno()) or
            (_tcp->transceiver().sequence_numbers_in_flight());
   });
-  cerr << "New connection from "
-       << _datagram_adapter.config().destination.to_string() << ".\n";
+  cerr << "\033[1;32mNew connection from "
+       << _datagram_adapter.config().destination.to_string() << ".\n\033[0m";
 
   _tcp_thread = thread(&TCPSocket::_tcp_main, this);
 }
@@ -292,13 +296,18 @@ void TCPSocket<AdaptT>::_tcp_main() {
     _tcp_loop([] { return true; });
     shutdown(SHUT_RDWR);
     if (not _tcp.value().active()) {
-      cerr << "DEBUG: TCP connection finished "
-           << (_tcp->inbound_reader().has_error() ? "uncleanly.\n"
-                                                  : "cleanly.\n");
+      if (_tcp->inbound_reader().has_error()) {
+        cerr << "\033[1;31mDEBUG: TCP connection finished "
+             << "uncleanly.\n\033[0m";
+      } else {
+        cerr << "\033[1;32mDEBUG: TCP connection finished "
+             << "cleanly.\n\033[0m";
+      }
     }
     _tcp.reset();
   } catch (const exception& e) {
-    cerr << "Exception in TCPConnection runner thread: " << e.what() << "\n";
+    cerr << "\033[1;31mException in TCPConnection runner thread: " << e.what()
+         << "\n\033[0m";
     throw e;
   }
 }
@@ -316,11 +325,11 @@ void TCPSocket<AdaptT>::collect_segments() {
 
 template class TCPSocket<TCPOverIPv4OverTunFdAdapter>;
 
-B_TCPSocket::B_TCPSocket()
+B_TCPSocketEpoll::B_TCPSocketEpoll(const std::string& devname)
     : TCPSocket<TCPOverIPv4OverTunFdAdapter>(
-          TCPOverIPv4OverTunFdAdapter(TunFD("tun144"))) {}
+          TCPOverIPv4OverTunFdAdapter(TunFD(devname)), EventEpoll()) {}
 
-void B_TCPSocket::connect(const Address& address) {
+void B_TCPSocketEpoll::connect(const Address& address) {
   TCPConfig tcp_config;
   tcp_config.rt_timeout = 100;
 
@@ -329,6 +338,10 @@ void B_TCPSocket::connect(const Address& address) {
       Address{"169.254.144.9", to_string(uint16_t(std::random_device()()))};
   multiplexer_config.destination = address;
 
-  TCPSocket<TCPOverIPv4OverTunFdAdapter>::connect(tcp_config,
-                                                  multiplexer_config);
+  connect(tcp_config, multiplexer_config);
+}
+
+void B_TCPSocketEpoll::connect(const TCPConfig& c_tcp,
+                               const FdAdapterConfig& c_ad) {
+  TCPSocket<TCPOverIPv4OverTunFdAdapter>::connect(c_tcp, c_ad);
 }

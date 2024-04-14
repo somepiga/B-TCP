@@ -16,11 +16,10 @@ class TCPOverIPv4OverTunFdAdapter {
  private:
   TunFD _tun;
 
-  FdAdapterConfig _cfg{};  //!< Configuration values
-  bool _listen = false;    //!< Is the connected TCP FSM in listen state?
+  FdAdapterConfig _cfg{};  //!< 配置内容
+  bool _listen = false;    //!< 是否处于监听态
 
  public:
-  //! Construct from a TunFD
   explicit TCPOverIPv4OverTunFdAdapter(TunFD&& tun) : _tun(std::move(tun)) {}
 
   //! Attempts to read and parse an IPv4 datagram containing a TCP segment

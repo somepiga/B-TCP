@@ -227,7 +227,8 @@ EventLoop::Result EventLoop::wait_next_event(const int timeout_ms) {
       // for
       const auto count_before = this_rule.service_count();
       this_rule.callback();
-
+      std::cout << "调用 " << _rule_categories.at(this_rule.category_id).name
+                << std::endl;
       if (count_before == this_rule.service_count() and
           (not this_rule.fd.closed()) and this_rule.interest()) {
         throw runtime_error("EventLoop: busy wait detected: rule \"" +

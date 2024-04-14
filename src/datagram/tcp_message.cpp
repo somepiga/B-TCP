@@ -170,9 +170,8 @@ void IPv4Header::serialize(Serializer& serializer) const {
 
 uint16_t IPv4Header::payload_length() const { return len - 4 * hlen; }
 
-//! \details This value is needed when computing the checksum of an encapsulated
-//! TCP segment.
-//! ~~~{.txt}
+//! \details 计算封装 TCP 段的校验和时需要该值.
+//!
 //!   0      7 8     15 16    23 24    31
 //!  +--------+--------+--------+--------+
 //!  |          source address           |
@@ -181,12 +180,15 @@ uint16_t IPv4Header::payload_length() const { return len - 4 * hlen; }
 //!  +--------+--------+--------+--------+
 //!  |  zero  |protocol|  payload length |
 //!  +--------+--------+--------+--------+
-//! ~~~
+//!
 uint32_t IPv4Header::pseudo_checksum() const {
-  uint32_t pcksum = (src >> 16) + static_cast<uint16_t>(src);  // source addr
-  pcksum += (dst >> 16) + static_cast<uint16_t>(dst);
-  pcksum += proto;             // protocol
-  pcksum += payload_length();  // payload length
+  uint32_t pcksum = 0;
+  pcksum +=
+      (src >> 16) + static_cast<uint16_t>(src);  // 源地址 (source address)
+  pcksum += (dst >> 16) +
+            static_cast<uint16_t>(dst);  // 目的地址 (destination address)
+  pcksum += proto;                       // 协议 (protocol)
+  pcksum += payload_length();            // 载荷长度 (payload length)
   return pcksum;
 }
 
@@ -195,7 +197,7 @@ void IPv4Header::compute_checksum() {
   Serializer s;
   serialize(s);
 
-  // calculate checksum -- taken over header only
+  // IP 校验和仅检验头部
   InternetChecksum check;
   check.add(s.output());
   cksum = check.value();

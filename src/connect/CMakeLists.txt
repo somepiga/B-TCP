@@ -4,8 +4,8 @@ add_library(
         b_socket.cpp
         base_socket.cpp
         reassembler.cpp
-        tcp_endpoint.cpp
-        transceiver.cpp)
+        transceiver.cpp
+        raw_tcpsocket.cpp)
 
 set(ALL_OBJECT_FILES
         ${ALL_OBJECT_FILES} $<TARGET_OBJECTS:B-TCP_connect>

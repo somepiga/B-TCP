@@ -7,30 +7,37 @@
 #include "datagram/address.h"
 #include "datagram/wrapping_integers.h"
 
-//! Config for TCP sender and receiver
+/**
+ * @brief 一条 TCP 信道的配置内容
+ */
 class TCPConfig {
  public:
-  static constexpr size_t DEFAULT_CAPACITY = 64000;  //!< Default capacity
-  static constexpr size_t MAX_PAYLOAD_SIZE =
-      1000;  //!< Conservative max payload size for real Internet
-  static constexpr uint16_t TIMEOUT_DFLT =
-      1000;  //!< Default re-transmit timeout is 1 second
-  static constexpr unsigned MAX_RETX_ATTEMPTS =
-      8;  //!< Maximum re-transmit attempts before giving up
+  static constexpr size_t DEFAULT_CAPACITY = 64000;  //!< 容量大小 (bytes)
 
-  uint16_t rt_timeout = TIMEOUT_DFLT;  //!< Initial value of the retransmission
-                                       //!< timeout, in milliseconds
-  size_t recv_capacity = DEFAULT_CAPACITY;  //!< Receive capacity, in bytes
-  size_t send_capacity = DEFAULT_CAPACITY;  //!< Sender capacity, in bytes
+  static constexpr size_t MAX_PAYLOAD_SIZE = 1000;  //!< 最大报文载荷 (bytes)
+
+  static constexpr uint16_t TIMEOUT_DFLT = 1000;  //!< 默认重传时间 (ms)
+
+  static constexpr unsigned MAX_RETX_ATTEMPTS = 8;  //!< 最大重传次数
+
+  uint16_t rt_timeout = TIMEOUT_DFLT;
+  size_t recv_capacity = DEFAULT_CAPACITY;
+  size_t send_capacity = DEFAULT_CAPACITY;
   std::optional<Wrap32> fixed_isn{};
 };
 
-//! Config for classes derived from FdAdapter
+/**
+ * @brief 适配器的配置内容
+ * 包含原ip, port ; 目的ip, port
+ */
 class FdAdapterConfig {
  public:
-  Address source{"0", 0};       //!< Source address and port
-  Address destination{"0", 0};  //!< Destination address and port
-
-  uint16_t loss_rate_dn = 0;  //!< Downlink loss rate (for LossyFdAdapter)
-  uint16_t loss_rate_up = 0;  //!< Uplink loss rate (for LossyFdAdapter)
+  Address source{"0", 0};
+  Address destination{"0", 0};
 };
+
+/**
+ * Socket 创建时的默认Tun配置
+ */
+constexpr const char* TUN_DFLT = "tun144";
+constexpr const char* LOCAL_ADDRESS_DFLT = "169.254.144.9";

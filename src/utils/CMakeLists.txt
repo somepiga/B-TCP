@@ -1,8 +1,8 @@
 add_library(
         B-TCP_utils
         OBJECT
-        eventloop.cpp)
+        stream_copy.cpp)
 
 set(ALL_OBJECT_FILES
-        ${ALL_OBJECT_FILES} $<TARGET_OBJECTS:B-TCP_datagram>
+        ${ALL_OBJECT_FILES} $<TARGET_OBJECTS:B-TCP_utils>
         PARENT_SCOPE)

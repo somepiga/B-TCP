@@ -7,7 +7,9 @@
 
 #include "buffer/string_buffer.h"
 
-// A reference-counted handle to a file descriptor
+/**
+ * @brief 对文件描述符一些重要内容的包装，使其更简洁
+ */
 class FileDescriptor {
   // FDWrapper: A handle on a kernel file descriptor.
   // FileDescriptor objects contain a std::shared_ptr to a FDWrapper.

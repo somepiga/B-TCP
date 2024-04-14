@@ -8,9 +8,9 @@
 #include "datagram/address.h"
 #include "datagram/file_descriptor.h"
 
-//! \brief Base class for network sockets (TCP, UDP, etc.)
-//! \details Socket is generally used via a subclass. See TCPSocket and
-//! UDPSocket for usage examples.
+/**
+ * @brief 各种 Socket 的基类，具体的用法见各派生类
+ */
 class Socket : public FileDescriptor {
  private:
   //! Get the local or peer address the socket is connected to
@@ -19,46 +19,35 @@ class Socket : public FileDescriptor {
       const std::function<int(int, sockaddr*, socklen_t*)>& function) const;
 
  protected:
-  //! Construct via [socket(2)](\ref man2::socket)
   Socket(int domain, int type, int protocol = 0);
 
-  //! Wrapper around [getsockopt(2)](\ref man2::getsockopt)
   template <typename option_type>
   socklen_t getsockopt(int level, int option, option_type& option_value) const;
 
-  //! Wrappers around [setsockopt(2)](\ref man2::setsockopt)
   template <typename option_type>
   void setsockopt(int level, int option, const option_type& option_value);
 
   void setsockopt(int level, int option, std::string_view option_val);
 
  public:
-  //! Construct from a file descriptor.
-  Socket(FileDescriptor&& fd, int domain, int type, int protocol = 0);
+  Socket(FileDescriptor&& fd, int domain, int type,
+         int protocol = 0);  //!< 从文件描述符构造
 
-  //! Bind a socket to a specified address with [bind(2)](\ref man2::bind),
-  //! usually for listen/accept
-  void bind(const Address& address);
+  void bind(const Address& address);  //!< 将 Socket 和一个 Address 绑定
 
-  //! Bind a socket to a specified device
-  void bind_to_device(std::string_view device_name);
+  void bind_to_device(
+      std::string_view device_name);  //!< 将 Socket 和一个设备绑定
 
-  //! Connect a socket to a specified peer address with [connect(2)](\ref
-  //! man2::connect)
-  void connect(const Address& address);
+  void connect(const Address& address);  //!< 连接到 Address
 
-  //! Shut down a socket via [shutdown(2)](\ref man2::shutdown)
-  void shutdown(int how);
+  void shutdown(int how);  //!< 关闭 Socket
 
-  //! Get local address of socket with [getsockname(2)](\ref man2::getsockname)
-  Address local_address() const;
-  //! Get peer address of socket with [getpeername(2)](\ref man2::getpeername)
-  Address peer_address() const;
+  Address local_address() const;  //!< 获得我端 Address
+  Address peer_address() const;   //!< 获得他端 Address
 
   //! Allow local address to be reused sooner via [SO_REUSEADDR](\ref
   //! man7::socket)
   void set_reuseaddr();
 
-  //! Check for errors (will be seen on non-blocking sockets)
-  void throw_if_error() const;
+  void throw_if_error() const;  //!< 检测故障
 };

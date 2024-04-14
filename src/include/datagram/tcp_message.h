@@ -7,6 +7,9 @@
 #include "utils/parser.h"
 #include "wrapping_integers.h"
 
+/**
+ * @brief TCP发送报文格式
+ */
 struct TCPSenderMessage {
   Wrap32 seqno{0};
   bool SYN{false};
@@ -17,6 +20,9 @@ struct TCPSenderMessage {
   size_t sequence_length() const { return SYN + payload.size() + FIN; }
 };
 
+/**
+ * @brief TCP接收报文格式
+ */
 struct TCPReceiverMessage {
   std::optional<Wrap32> ackno{};
   uint16_t window_size{};
@@ -41,6 +47,9 @@ struct TCPSegment {
   void compute_checksum(uint32_t datagram_layer_pseudo_checksum);
 };
 
+/**
+ * @brief IP报头
+ */
 struct IPv4Header {
   static constexpr size_t LENGTH =
       20;  // IPv4 header length, not including options
@@ -98,6 +107,9 @@ struct IPv4Header {
   void serialize(Serializer& serializer) const;
 };
 
+/**
+ * @brief TCP数据报
+ */
 struct IPv4Datagram {
   IPv4Header header{};
   std::vector<Buffer> payload{};

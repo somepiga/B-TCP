@@ -92,6 +92,7 @@
         "map": "cpp",
         "eventloop.h": "c",
         "file_descriptor.h": "c",
-        "__tree": "cpp"
+        "__tree": "cpp",
+        "set": "cpp"
     }
 }

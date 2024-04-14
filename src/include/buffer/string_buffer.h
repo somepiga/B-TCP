@@ -3,6 +3,9 @@
 #include <memory>
 #include <string>
 
+/**
+ * @brief std::string 的包装类，用于存放报文信息
+ */
 class Buffer {
   std::shared_ptr<std::string> buffer_;
 

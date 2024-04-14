@@ -1,1 +1,5 @@
 /build
+/doc
+Doxyfile
+look.sh
+push.sh

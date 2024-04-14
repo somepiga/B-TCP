@@ -1,10 +1,9 @@
 add_library(
-        B-TCP_datagram
+        B-TCP_polling
         OBJECT
-        address.cpp
-        file_descriptor.cpp
-        tcp_message.cpp
-        wrapping_integers.cpp)
+        b_epoll.cpp
+        eventpolling.cpp
+        rule.cpp)
 
 set(ALL_OBJECT_FILES
         ${ALL_OBJECT_FILES} $<TARGET_OBJECTS:B-TCP_polling>

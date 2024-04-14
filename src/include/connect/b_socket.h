@@ -7,15 +7,16 @@
 #include <vector>
 
 #include "buffer/string_buffer.h"
-#include "connect/base_socket.h"
-#include "datagram/file_descriptor.h"
-#include "utils/eventloop.h"
-// #include "network_interface.hh"
-// #include "socket.hh"
 #include "config/tcp_config.h"
+#include "connect/base_socket.h"
 #include "connect/tcp_endpoint.h"
+#include "datagram/file_descriptor.h"
+#include "polling/eventpolling.h"
 #include "tun/tun_adapter.h"
 
+/**
+ * @brief TCPSocket
+ */
 template <typename AdaptT>
 class TCPSocket : public Socket {
  private:
@@ -27,11 +28,11 @@ class TCPSocket : public Socket {
  private:
   void _initialize_TCP(const TCPConfig& config);
 
-  std::optional<TCPEndpoint> _tcp{};
+  std::optional<TCPEndpoint> _tcp{};  //!< TCP状态机
 
-  std::queue<TCPSegment> outgoing_segments_{};
+  std::queue<TCPSegment> outgoing_segments_{};  //!< 待发送数据包的队列
 
-  EventLoop _eventloop{};
+  EventEpoll _eventloop;  //!< 轮询事件
 
   void _tcp_loop(const std::function<bool()>& condition);
 
@@ -40,7 +41,7 @@ class TCPSocket : public Socket {
   std::thread _tcp_thread{};
 
   TCPSocket(std::pair<FileDescriptor, FileDescriptor> data_socket_pair,
-            AdaptT&& datagram_interface);
+            AdaptT&& datagram_interface, EventEpoll&& eventloop);
 
   std::atomic_bool _abort{false};
 
@@ -53,7 +54,7 @@ class TCPSocket : public Socket {
   void collect_segments();
 
  public:
-  explicit TCPSocket(AdaptT&& datagram_interface);
+  explicit TCPSocket(AdaptT&& datagram_interface, EventEpoll&& eventloop);
 
   void wait_until_closed();
 
@@ -70,10 +71,6 @@ class TCPSocket : public Socket {
   TCPSocket& operator=(TCPSocket&&) = delete;
   //!@}
 
-  //! \name
-  //! Some methods of the parent Socket wouldn't work as expected on the TCP
-  //! socket, so delete them
-
   //!@{
   void bind(const Address& address) = delete;
   Address local_address() const = delete;
@@ -82,8 +79,13 @@ class TCPSocket : public Socket {
   //!@}
 };
 
-class B_TCPSocket : public TCPSocket<TCPOverIPv4OverTunFdAdapter> {
+/**
+ * @brief 利用 tun 技术建立的 TCPSocket, 内部采用 epoll
+ * 可以屏蔽网络层以下的细节
+ */
+class B_TCPSocketEpoll : public TCPSocket<TCPOverIPv4OverTunFdAdapter> {
  public:
-  B_TCPSocket();
+  B_TCPSocketEpoll(const std::string& devname);
   void connect(const Address& address);
+  void connect(const TCPConfig& c_tcp, const FdAdapterConfig& c_ad);
 };

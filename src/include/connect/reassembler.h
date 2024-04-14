@@ -5,13 +5,15 @@
 
 #include "buffer/stream_buffer.h"
 
+/**
+ * @brief 流重组器，将乱序收到的包重组后向上层提交
+ */
 class Reassembler {
  public:
   void insert(uint64_t first_index, std::string data, bool is_last_substring,
               Writer& output);
 
-  // How many bytes are stored in the Reassembler itself?
-  uint64_t bytes_pending() const;
+  uint64_t bytes_pending() const;  //!< Reassembler 内已经存放多少数据
 
  private:
   //* Reassembler throughput: 12.20 Gbit/s

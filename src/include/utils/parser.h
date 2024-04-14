@@ -14,6 +14,10 @@
 
 #include "buffer/string_buffer.h"
 
+/**
+ * @note <concepts> 中的 unsigned_integral 为C++20新添加内容,如IDE报错,不必理会
+ */
+
 class Serializer;
 
 class Parser {

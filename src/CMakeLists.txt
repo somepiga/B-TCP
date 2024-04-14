@@ -1,6 +1,7 @@
 add_subdirectory(buffer)
 add_subdirectory(connect)
 add_subdirectory(datagram)
+add_subdirectory(polling)
 add_subdirectory(tun)
 add_subdirectory(utils)
 
@@ -10,6 +11,7 @@ set(BUSTUB_LIBS
         B-TCP_buffer
         B-TCP_connect
         B-TCP_datagram
+        B-TCP_polling
         B-TCP_tun
         B-TCP_utils)
 

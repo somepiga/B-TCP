@@ -6,7 +6,7 @@
 #include "connect/b_socket.h"
 
 void get_URL(const std::string& host, const std::string& path) {
-  B_TCPSocket socket;
+  B_TCPSocketEpoll socket(TUN_DFLT);
   socket.connect(Address{host, "http"});
   socket.write("GET " + path + " HTTP/1.1\r\n");
   socket.write("Host: " + host + "\r\n");
@@ -18,10 +18,11 @@ void get_URL(const std::string& host, const std::string& path) {
     data += datapart;
   }
   std::cout << data << std::endl;
+
+  socket.wait_until_closed();
 }
 
 int main(int argc, char* argv[]) {
-  // 实现socket
   try {
     if (argc <= 0) {
       abort();
@@ -31,8 +32,7 @@ int main(int argc, char* argv[]) {
 
     if (argc != 3) {
       std::cerr << "Usage: " << args.front() << " HOST PATH\n";
-      std::cerr << "\tExample: " << args.front()
-                << " stanford.edu /class/cs144\n";
+      std::cerr << "\tExample: " << args.front() << " www.baidu.com /\n";
       return EXIT_FAILURE;
     }
 

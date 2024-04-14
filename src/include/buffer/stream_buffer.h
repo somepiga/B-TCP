@@ -7,7 +7,9 @@
 class Reader;
 class Writer;
 
-/* 照搬过来的，可操作性不大了 */
+/**
+ * @brief 有大小限制的字节流，用于 TCP 通信时收发消息，详见 TCPEndpoint
+ */
 class StreamBuffer {
  protected:
   uint64_t capacity_;
@@ -41,21 +43,14 @@ class Writer : public StreamBuffer {
 
 class Reader : public StreamBuffer {
  public:
-  std::string_view peek() const;  // Peek at the next bytes in the buffer
-  void pop(uint64_t len);         // Remove `len` bytes from the buffer
+  std::string_view peek() const;  //!< 查看 Buffer 中下一个字节
+  void pop(uint64_t len);
 
-  bool is_finished()
-      const;               // Is the stream finished (closed and fully popped)?
-  bool has_error() const;  // Has the stream had an error?
+  bool is_finished() const;  //!< Stream 是否结束 (closed and fully popped)?
+  bool has_error() const;    //!< Stream 是否出错?
 
-  uint64_t bytes_buffered()
-      const;  // Number of bytes currently buffered (pushed and not popped)
-  uint64_t bytes_popped()
-      const;  // Total number of bytes cumulatively popped from stream
+  uint64_t bytes_buffered() const;  //!< StreamBuffer 此时存放了多少字节
+  uint64_t bytes_popped() const;    //!< 累计 pop 了多少字节
 };
 
-/*
- * read: A (provided) helper function thats peeks and pops up to `len` bytes
- * from a StreamBuffer Reader into a string;
- */
 void read(Reader &reader, uint64_t len, std::string &out);

@@ -6,7 +6,9 @@
 
 #include "buffer/string_buffer.h"
 
-//! The internet checksum algorithm
+/**
+ * @brief 计算校验和
+ */
 class InternetChecksum {
  private:
   uint32_t sum_;
