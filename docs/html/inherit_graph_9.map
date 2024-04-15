@@ -1,0 +1,17 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁" alt="" coords="5,121,117,146"/>
+<area shape="rect" id="Node000001" href="$classSocket.html" title="各种 Socket 的基类，具体的用法见各派生类" alt="" coords="175,95,240,121"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="130,119,174,111,175,116,131,124"/>
+<area shape="rect" id="Node000006" href="$classTunTapFD.html" title=" " alt="" coords="165,145,249,170"/>
+<area shape="poly" id="edge9_Node000000_Node000006" title=" " alt="" coords="132,142,166,148,165,153,131,147"/>
+<area shape="rect" id="Node000002" href="$classTCPSocket.html" title=" " alt="" coords="297,5,516,45"/>
+<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="239,86,296,56,332,43,333,48,298,61,242,90"/>
+<area shape="rect" id="Node000004" href="$classRawTCPSocket.html" title="A wrapper around TCP sockets." alt="" coords="348,70,465,95"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="253,100,347,87,348,93,254,105"/>
+<area shape="rect" id="Node000005" href="$classTCPSocket.html" title="TCPSocket." alt="" coords="324,119,489,145"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="254,111,324,119,323,125,254,116"/>
+<area shape="rect" id="Node000003" href="$classB__TCPSocketEpoll.html" title="利用 tun 技术建立的 TCPSocket, 内部采用 epoll 可以屏蔽网络层以下的细节" alt="" coords="564,13,701,38"/>
+<area shape="poly" id="edge6_Node000002_Node000003" title=" " alt="" coords="530,23,564,23,564,28,530,28"/>
+<area shape="rect" id="Node000007" href="$classTunFD.html" title=" " alt="" coords="375,169,438,194"/>
+<area shape="poly" id="edge10_Node000006_Node000007" title=" " alt="" coords="263,161,375,175,375,180,262,167"/>
+</map>

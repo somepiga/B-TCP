@@ -1,0 +1,7 @@
+<map id="B_TCPSocket" name="B_TCPSocket">
+<area shape="rect" id="node1" title="利用 tun 技术建立的 TCPSocket 可以屏蔽网络层以下的细节" alt="" coords="93,261,198,288"/>
+<area shape="rect" id="node2" href="$classTCPSocket.html" title=" " alt="" coords="36,171,255,212"/>
+<area shape="rect" id="node3" href="$classSocket.html" title="各种 Socket 的基类，具体的用法见各派生类" alt="" coords="29,81,94,108"/>
+<area shape="rect" id="node4" href="$classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁" alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node5" href="$classTCPOverIPv4OverTunFdAdapter.html" title="A FD adapter for IPv4 datagrams read from and written to a TUN device." alt="" coords="118,81,343,108"/>
+</map>

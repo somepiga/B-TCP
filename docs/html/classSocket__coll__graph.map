@@ -1,0 +1,5 @@
+<map id="Socket" name="Socket">
+<area shape="rect" id="Node000001" title="各种 Socket 的基类，具体的用法见各派生类" alt="" coords="29,79,94,104"/>
+<area shape="rect" id="Node000002" href="$classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁" alt="" coords="5,5,117,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,44,64,79,59,79,59,44"/>
+</map>

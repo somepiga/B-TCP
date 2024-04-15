@@ -1,0 +1,5 @@
+<map id="IPv4Datagram" name="IPv4Datagram">
+<area shape="rect" id="Node000001" title="TCP数据报" alt="" coords="5,93,120,119"/>
+<area shape="rect" id="Node000002" href="$structIPv4Header.html" title="IP报头" alt="" coords="14,5,111,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,45,65,93,60,93,60,45"/>
+</map>
