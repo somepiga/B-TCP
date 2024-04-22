@@ -6,7 +6,7 @@
 <area shape="poly" id="edge9_Node000000_Node000006" title=" " alt="" coords="132,142,166,148,165,153,131,147"/>
 <area shape="rect" id="Node000002" href="$classTCPSocket.html" title=" " alt="" coords="297,5,516,45"/>
 <area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="239,86,296,56,332,43,333,48,298,61,242,90"/>
-<area shape="rect" id="Node000004" href="$classRawTCPSocket.html" title="A wrapper around TCP sockets." alt="" coords="348,70,465,95"/>
+<area shape="rect" id="Node000004" href="$classRawTCPSocket.html" title="对[TCP sockets]的封装" alt="" coords="348,70,465,95"/>
 <area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="253,100,347,87,348,93,254,105"/>
 <area shape="rect" id="Node000005" href="$classTCPSocket.html" title="TCPSocket." alt="" coords="324,119,489,145"/>
 <area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="254,111,324,119,323,125,254,116"/>

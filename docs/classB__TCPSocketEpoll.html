@@ -108,7 +108,7 @@ Collaboration diagram for B_TCPSocketEpoll:</div>
 <area shape="poly" title=" " alt="" coords="83,114,130,166,126,170,79,117"/>
 <area shape="rect" href="classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁" alt="" coords="5,5,117,31"/>
 <area shape="poly" title=" " alt="" coords="64,45,64,80,59,80,59,45"/>
-<area shape="rect" href="classTCPOverIPv4OverTunFdAdapter.html" title="A FD adapter for IPv4 datagrams read from and written to a TUN device." alt="" coords="118,80,343,105"/>
+<area shape="rect" href="classTCPOverIPv4OverTunFdAdapter.html" title="实现传输层和网络层的报文转换" alt="" coords="118,80,343,105"/>
 <area shape="poly" title=" " alt="" coords="213,117,165,170,161,166,209,113"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -184,6 +184,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (int how
 <tr class="memdesc:ac84bc70e67e9a156c79052e410e6bfa3 inherit pub_methods_classSocket"><td class="mdescLeft">&#160;</td><td class="mdescRight">获得他端 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a>  <br /></td></tr>
 <tr class="separator:ac84bc70e67e9a156c79052e410e6bfa3 inherit pub_methods_classSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket" id="r_afc6ed565fddaa9d7ee4904ecc96bb6c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#afc6ed565fddaa9d7ee4904ecc96bb6c0">set_reuseaddr</a> ()</td></tr>
+<tr class="memdesc:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过 [SO_REUSEADDR] 允许更快地重用本地地址  <br /></td></tr>
 <tr class="separator:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8869218c5757f756aa2503af4f61777 inherit pub_methods_classSocket" id="r_ab8869218c5757f756aa2503af4f61777"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>throw_if_error</b> () const</td></tr>
@@ -231,9 +232,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>closed</b> () const</
 <tr class="separator:a1d7e86443d3717059dd206ff6dd6aa2a inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor" id="r_a17cedb6f9f90290d9e9e8b11a0b19992"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>read_count</b> () const</td></tr>
+<tr class="memdesc:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取次数 <br /></td></tr>
 <tr class="separator:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor" id="r_a5969624dacf7135d6630b6bd3412fb93"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>write_count</b> () const</td></tr>
+<tr class="memdesc:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入次数 <br /></td></tr>
 <tr class="separator:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbc8da70d830f97e117b0297b9227059 inherit pub_methods_classFileDescriptor" id="r_adbc8da70d830f97e117b0297b9227059"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>FileDescriptor</b> (const <a class="el" href="classFileDescriptor.html">FileDescriptor</a> &amp;other)=delete</td></tr>

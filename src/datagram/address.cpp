@@ -14,19 +14,19 @@
 
 using namespace std;
 
-//! Converts Raw to `sockaddr *`.
+//! 将 Raw 转换为 `sockaddr *`
 Address::Raw::operator sockaddr*() {
   return reinterpret_cast<sockaddr*>(&storage);  // NOLINT(*-reinterpret-cast)
 }
 
-//! Converts Raw to `const sockaddr *`.
+//! 将 Raw 转换为 `const sockaddr *`.
 Address::Raw::operator const sockaddr*() const {
   return reinterpret_cast<const sockaddr*>(
       &storage);  // NOLINT(*-reinterpret-cast)
 }
 
-//! \param[in] addr points to a raw socket address
-//! \param[in] size is `addr`'s length
+//! \param[in] addr 指向原始socket的指针
+//! \param[in] size `addr`的长度
 Address::Address(const sockaddr* addr, const size_t size) : _size(size) {
   // make sure proposed sockaddr can fit
   if (size > sizeof(_address.storage)) {
@@ -36,30 +36,26 @@ Address::Address(const sockaddr* addr, const size_t size) : _size(size) {
   memcpy(&_address.storage, addr, size);
 }
 
-//! Error category for getaddrinfo and getnameinfo failures.
+//! \brief getaddrinfo 和 getnameinfo 的错误类别
 class gai_error_category : public error_category {
  public:
-  //! The name of the wrapped error
+  //! error名称
   const char* name() const noexcept override { return "gai_error_category"; }
-  //! \brief An error message
-  //! \param[in] return_value the error return value from [getaddrinfo(3)](\ref
-  //! man3::getaddrinfo)
-  //!                         or [getnameinfo(3)](\ref man3::getnameinfo)
+  //! \brief 错误信息
+  //! \param[in] return_value [getaddrinfo(3)]或[getnameinfo(3)]返回的错误值
   string message(const int return_value) const noexcept override {
     return gai_strerror(return_value);
   }
 };
 
-//! \param[in] node is the hostname or dotted-quad address
-//! \param[in] service is the service name or numeric string
-//! \param[in] hints are criteria for resolving the supplied name
+//! \param[in] node 主机名或点分四地址
+//! \param[in] service 服务名称或数字字符串
+//! \param[in] hints 解析提供的名称的标准
 Address::Address(const string& node, const string& service,
                  const addrinfo& hints)
     : _size() {
-  // prepare for the answer
   addrinfo* resolved_address = nullptr;
 
-  // look up the name or names
   const int gai_ret =
       getaddrinfo(node.c_str(), service.c_str(), &hints, &resolved_address);
   if (gai_ret != 0) {
@@ -67,49 +63,43 @@ Address::Address(const string& node, const string& service,
                        "getaddrinfo(" + node + ", " + service + ")", gai_ret);
   }
 
-  // if success, should always have at least one entry
+  // 如果成功，应该至少有一个条目
   if (resolved_address == nullptr) {
     throw runtime_error(
         "getaddrinfo returned successfully but with no results");
   }
 
-  // put resolved_address in a wrapper so it will get freed if we have to throw
-  // an exception
+  // 封装 resolved_address，在 throw exception 时释放
   auto addrinfo_deleter = [](addrinfo* const x) { freeaddrinfo(x); };
   unique_ptr<addrinfo, decltype(addrinfo_deleter)> wrapped_address(
       resolved_address, std::move(addrinfo_deleter));
 
-  // assign to our private members (making sure size fits)
   *this = Address(wrapped_address->ai_addr, wrapped_address->ai_addrlen);
 }
 
-//! \brief Build a `struct addrinfo` containing hints for [getaddrinfo(3)](\ref
-//! man3::getaddrinfo) \param[in] ai_flags is the value of the `ai_flags` field
-//! in the [struct addrinfo](\ref man3::getaddrinfo) \param[in] ai_family is the
-//! value of the `ai_family` field in the [struct addrinfo](\ref
-//! man3::getaddrinfo)
+//! \brief 构建一个包含 [getaddrinfo(3)] 提示的 `struct addrinfo`
+//! \param[in] ai_flags [struct addrinfo] 中 `ai_flags` 字段的值
+//! \param[in] ai_family [struct addrinfo] 中 `ai_family` 字段的值
 static inline addrinfo make_hints(
     int ai_flags, int ai_family)  // NOLINT(*-swappable-parameters)
 {
-  addrinfo hints{};  // value initialized to all zeros
+  addrinfo hints{};  // 初始化为全零
   hints.ai_flags = ai_flags;
   hints.ai_family = ai_family;
   return hints;
 }
 
 //! \param[in] hostname to resolve
-//! \param[in] service name (from `/etc/services`, e.g., "http" is port 80)
+//! \param[in] service  服务方式 (from `/etc/services`, 如 "http" is port 80)
 Address::Address(const string& hostname, const string& service)
     : Address(hostname, service, make_hints(AI_ALL, AF_INET)) {}
 
-//! \param[in] ip address as a dotted quad ("1.1.1.1")
-//! \param[in] port number
+//! \param[in] ip IP地址，形如(1.1.1.1)
+//! \param[in] port 端口
 Address::Address(const string& ip, const uint16_t port)
-    // tell getaddrinfo that we don't want to resolve anything
     : Address(ip, ::to_string(port),
               make_hints(AI_NUMERICHOST | AI_NUMERICSERV, AF_INET)) {}
 
-// accessors
 pair<string, uint16_t> Address::ip_port() const {
   array<char, NI_MAXHOST> ip{};
   array<char, NI_MAXSERV> port{};
@@ -149,7 +139,6 @@ Address Address::from_ipv4_numeric(const uint32_t ip_address) {
           sizeof(ipv4_addr)};  // NOLINT(*-reinterpret-cast)
 }
 
-// equality
 bool Address::operator==(const Address& other) const {
   if (_size != other._size) {
     return false;
@@ -158,7 +147,7 @@ bool Address::operator==(const Address& other) const {
   return 0 == memcmp(&_address, &other._address, _size);
 }
 
-// address families that correspond to each sockaddr type
+// 与每个 sockaddr 类型对应的地址族
 template <typename sockaddr_type>
 constexpr int sockaddr_family = -1;
 
@@ -171,7 +160,7 @@ constexpr int sockaddr_family<sockaddr_in6> = AF_INET6;
 template <>
 constexpr int sockaddr_family<sockaddr_ll> = AF_PACKET;
 
-// safely cast the address to its underlying sockaddr type
+// 安全地将地址转换为其基础 sockaddr 类型
 template <typename sockaddr_type>
 const sockaddr_type* Address::as() const {
   const sockaddr* raw{_address};

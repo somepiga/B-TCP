@@ -6,6 +6,9 @@
 
 #include "polling/rule.h"
 
+/**
+ * @brief epoll类，会被加载入EventLoop
+ */
 class B_epoll {
   int epoll_fd;
 

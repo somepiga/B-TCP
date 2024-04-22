@@ -107,57 +107,55 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
 </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structBasicRule.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBasicRule.html">BasicRule</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">size_t</span> category_id;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  InterestT interest;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  CallbackT callback;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">bool</span> cancel_requested{};</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <a class="code hl_struct" href="structBasicRule.html">BasicRule</a>(<span class="keywordtype">size_t</span> s_category_id, InterestT s_interest, CallbackT s_callback);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structBasicRule.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBasicRule.html">BasicRule</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keywordtype">size_t</span> category_id;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  InterestT interest;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  CallbackT callback;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordtype">bool</span> cancel_requested{};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <a class="code hl_struct" href="structBasicRule.html">BasicRule</a>(<span class="keywordtype">size_t</span> s_category_id, InterestT s_interest, CallbackT s_callback);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structFDRule.html">   35</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structFDRule.html">FDRule</a> : <span class="keyword">public</span> <a class="code hl_struct" href="structBasicRule.html">BasicRule</a> {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structFDRule.html#abe3c36f06f7b6c755a77e0a33cc48a9d">   36</a></span>  <a class="code hl_class" href="classFileDescriptor.html">FileDescriptor</a> <a class="code hl_variable" href="structFDRule.html#abe3c36f06f7b6c755a77e0a33cc48a9d">fd</a>;    </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structFDRule.html#a61c34a858cbc9b7a786f5075e8b1d997">   37</a></span>  Direction <a class="code hl_variable" href="structFDRule.html#a61c34a858cbc9b7a786f5075e8b1d997">direction</a>;  </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">   39</a></span>  CallbackT <a class="code hl_variable" href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">cancel</a>;   </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">   41</a></span>  InterestT <a class="code hl_variable" href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">recover</a>;  </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_struct" href="structFDRule.html">FDRule</a>(<a class="code hl_struct" href="structBasicRule.html">BasicRule</a>&amp;&amp; base, <a class="code hl_class" href="classFileDescriptor.html">FileDescriptor</a>&amp;&amp; s_fd, Direction s_direction,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>         CallbackT s_cancel, InterestT s_recover);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structFDRule.html">   41</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structFDRule.html">FDRule</a> : <span class="keyword">public</span> <a class="code hl_struct" href="structBasicRule.html">BasicRule</a> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <a class="code hl_class" href="classFileDescriptor.html">FileDescriptor</a> fd;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  Direction direction;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">   44</a></span>  CallbackT <a class="code hl_variable" href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">cancel</a>;   </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">   45</a></span>  InterestT <a class="code hl_variable" href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">recover</a>;  </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="structFDRule.html#a691e8bc553793ae4f96036c20a95c714">service_count</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_struct" href="structFDRule.html">FDRule</a>(<a class="code hl_struct" href="structBasicRule.html">BasicRule</a>&amp;&amp; base, <a class="code hl_class" href="classFileDescriptor.html">FileDescriptor</a>&amp;&amp; s_fd, Direction s_direction,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>         CallbackT s_cancel, InterestT s_recover);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="structFDRule.html#a691e8bc553793ae4f96036c20a95c714">service_count</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">enum class</span> Result {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  Success,  </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  Timeout,  </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  Exit      </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classRuleHandle.html">   61</a></span><span class="keyword">class </span><a class="code hl_class" href="classRuleHandle.html">RuleHandle</a> {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::weak_ptr&lt;BasicRule&gt; rule_weak_ptr_;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">enum class</span> Result {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  Success,  </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  Timeout,  </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  Exit  </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">template</span> &lt;<span class="keyword">class</span> RuleType&gt;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classRuleHandle.html">RuleHandle</a>(<span class="keyword">const</span> std::shared_ptr&lt;RuleType&gt; x) : rule_weak_ptr_(x) {}</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordtype">void</span> cancel();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classRuleHandle.html">   64</a></span><span class="keyword">class </span><a class="code hl_class" href="classRuleHandle.html">RuleHandle</a> {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  std::weak_ptr&lt;BasicRule&gt; rule_weak_ptr_;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keyword">template</span> &lt;<span class="keyword">class</span> RuleType&gt;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classRuleHandle.html">RuleHandle</a>(<span class="keyword">const</span> std::shared_ptr&lt;RuleType&gt; x) : rule_weak_ptr_(x) {}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">void</span> cancel();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 </div>
 <div class="ttc" id="aclassFileDescriptor_html"><div class="ttname"><a href="classFileDescriptor.html">FileDescriptor</a></div><div class="ttdoc">对文件描述符一些重要内容的包装，使其更简洁</div><div class="ttdef"><b>Definition</b> file_descriptor.h:13</div></div>
-<div class="ttc" id="aclassRuleHandle_html"><div class="ttname"><a href="classRuleHandle.html">RuleHandle</a></div><div class="ttdef"><b>Definition</b> rule.h:61</div></div>
-<div class="ttc" id="astructBasicRule_html"><div class="ttname"><a href="structBasicRule.html">BasicRule</a></div><div class="ttdef"><b>Definition</b> rule.h:23</div></div>
-<div class="ttc" id="astructFDRule_html"><div class="ttname"><a href="structFDRule.html">FDRule</a></div><div class="ttdef"><b>Definition</b> rule.h:35</div></div>
-<div class="ttc" id="astructFDRule_html_a3ff1d41263b0cc0a11a2e89293276397"><div class="ttname"><a href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">FDRule::cancel</a></div><div class="ttdeci">CallbackT cancel</div><div class="ttdef"><b>Definition</b> rule.h:39</div></div>
-<div class="ttc" id="astructFDRule_html_a61c34a858cbc9b7a786f5075e8b1d997"><div class="ttname"><a href="structFDRule.html#a61c34a858cbc9b7a786f5075e8b1d997">FDRule::direction</a></div><div class="ttdeci">Direction direction</div><div class="ttdef"><b>Definition</b> rule.h:37</div></div>
+<div class="ttc" id="aclassRuleHandle_html"><div class="ttname"><a href="classRuleHandle.html">RuleHandle</a></div><div class="ttdef"><b>Definition</b> rule.h:64</div></div>
+<div class="ttc" id="astructBasicRule_html"><div class="ttname"><a href="structBasicRule.html">BasicRule</a></div><div class="ttdoc">事件规则基类</div><div class="ttdef"><b>Definition</b> rule.h:28</div></div>
+<div class="ttc" id="astructFDRule_html"><div class="ttname"><a href="structFDRule.html">FDRule</a></div><div class="ttdoc">关于文件描述符的事件规则</div><div class="ttdef"><b>Definition</b> rule.h:41</div></div>
+<div class="ttc" id="astructFDRule_html_a3ff1d41263b0cc0a11a2e89293276397"><div class="ttname"><a href="structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397">FDRule::cancel</a></div><div class="ttdeci">CallbackT cancel</div><div class="ttdoc">取消规则时调用的回调</div><div class="ttdef"><b>Definition</b> rule.h:44</div></div>
 <div class="ttc" id="astructFDRule_html_a691e8bc553793ae4f96036c20a95c714"><div class="ttname"><a href="structFDRule.html#a691e8bc553793ae4f96036c20a95c714">FDRule::service_count</a></div><div class="ttdeci">unsigned int service_count() const</div><div class="ttdef"><b>Definition</b> rule.cpp:3</div></div>
-<div class="ttc" id="astructFDRule_html_aae96c4486bd588ae3a1f2edb340891a7"><div class="ttname"><a href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">FDRule::recover</a></div><div class="ttdeci">InterestT recover</div><div class="ttdef"><b>Definition</b> rule.h:41</div></div>
-<div class="ttc" id="astructFDRule_html_abe3c36f06f7b6c755a77e0a33cc48a9d"><div class="ttname"><a href="structFDRule.html#abe3c36f06f7b6c755a77e0a33cc48a9d">FDRule::fd</a></div><div class="ttdeci">FileDescriptor fd</div><div class="ttdoc">FileDescriptor to monitor for activity.</div><div class="ttdef"><b>Definition</b> rule.h:36</div></div>
+<div class="ttc" id="astructFDRule_html_aae96c4486bd588ae3a1f2edb340891a7"><div class="ttname"><a href="structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7">FDRule::recover</a></div><div class="ttdeci">InterestT recover</div><div class="ttdoc">当 fd ERR 时调用的回调</div><div class="ttdef"><b>Definition</b> rule.h:45</div></div>
 <div class="ttc" id="astructRuleCategory_html"><div class="ttname"><a href="structRuleCategory.html">RuleCategory</a></div><div class="ttdef"><b>Definition</b> rule.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

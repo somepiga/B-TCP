@@ -13,7 +13,7 @@
  */
 class Socket : public FileDescriptor {
  private:
-  //! Get the local or peer address the socket is connected to
+  //! 获取socket连接到的本地或对等地址
   Address get_address(
       const std::string& name_of_function,
       const std::function<int(int, sockaddr*, socklen_t*)>& function) const;
@@ -45,8 +45,7 @@ class Socket : public FileDescriptor {
   Address local_address() const;  //!< 获得我端 Address
   Address peer_address() const;   //!< 获得他端 Address
 
-  //! Allow local address to be reused sooner via [SO_REUSEADDR](\ref
-  //! man7::socket)
+  //! 通过 [SO_REUSEADDR] 允许更快地重用本地地址
   void set_reuseaddr();
 
   void throw_if_error() const;  //!< 检测故障

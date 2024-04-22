@@ -121,13 +121,13 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (inbound_stream_.reader().<a class="code hl_function" href="classReader.html#a4a7837d566687d04d7f6776abaa99cf2">has_error</a>()) {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> (not outbound_stream_.reader().<a class="code hl_function" href="classReader.html#a5f0a5ab62444f3d3b88b1bd22bbd1731">is_finished</a>()) or</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>           (not inbound_stream_.writer().is_closed()) or</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> (!outbound_stream_.reader().<a class="code hl_function" href="classReader.html#a5f0a5ab62444f3d3b88b1bd22bbd1731">is_finished</a>()) ||</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>           (!inbound_stream_.writer().is_closed()) ||</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>           transceiver_.sequence_numbers_in_flight();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  }</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordtype">void</span> receive(<a class="code hl_struct" href="structTCPSegment.html">TCPSegment</a> seg) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (seg.reset or inbound_reader().has_error()) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (seg.<a class="code hl_variable" href="structTCPSegment.html#af56555b011f66515dc0463391b5cde1c">reset</a> || inbound_reader().has_error()) {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      inbound_stream_.writer().set_error();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
@@ -137,7 +137,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    need_send_ |= (seg.sender_message.sequence_length() &gt; 0);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">const</span> <span class="keyword">auto</span> our_ackno =</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        transceiver_.send_ack(inbound_stream_.writer()).ackno;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    need_send_ |= (our_ackno.has_value() and</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    need_send_ |= (our_ackno.has_value() &amp;&amp;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                   seg.sender_message.seqno + 1 == our_ackno.value());</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    transceiver_.receive_isn(std::move(seg.sender_message), reassembler_,</div>
@@ -153,7 +153,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">auto</span> sender_msg = transceiver_.maybe_send();</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (need_send_ and not sender_msg.has_value()) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (need_send_ &amp;&amp; !sender_msg.has_value()) {</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      sender_msg = transceiver_.send_empty_message();</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
@@ -180,7 +180,8 @@ $(function() { codefold.init(0); });
 <div class="ttc" id="aclassTCPEndpoint_html"><div class="ttname"><a href="classTCPEndpoint.html">TCPEndpoint</a></div><div class="ttdoc">TCPSocket 的一端</div><div class="ttdef"><b>Definition</b> tcp_endpoint.h:12</div></div>
 <div class="ttc" id="aclassTransceiver_html"><div class="ttname"><a href="classTransceiver.html">Transceiver</a></div><div class="ttdoc">收发器</div><div class="ttdef"><b>Definition</b> transceiver.h:14</div></div>
 <div class="ttc" id="aclassWriter_html"><div class="ttname"><a href="classWriter.html">Writer</a></div><div class="ttdef"><b>Definition</b> stream_buffer.h:33</div></div>
-<div class="ttc" id="astructTCPSegment_html"><div class="ttname"><a href="structTCPSegment.html">TCPSegment</a></div><div class="ttdef"><b>Definition</b> tcp_message.h:37</div></div>
+<div class="ttc" id="astructTCPSegment_html"><div class="ttname"><a href="structTCPSegment.html">TCPSegment</a></div><div class="ttdoc">完整的TCP报文</div><div class="ttdef"><b>Definition</b> tcp_message.h:43</div></div>
+<div class="ttc" id="astructTCPSegment_html_af56555b011f66515dc0463391b5cde1c"><div class="ttname"><a href="structTCPSegment.html#af56555b011f66515dc0463391b5cde1c">TCPSegment::reset</a></div><div class="ttdeci">bool reset</div><div class="ttdoc">连接遇到异常错误，应关闭</div><div class="ttdef"><b>Definition</b> tcp_message.h:46</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

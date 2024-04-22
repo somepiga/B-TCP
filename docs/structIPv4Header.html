@@ -118,7 +118,7 @@ Public Attributes</h2></td></tr>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ver</b> = 4</td></tr>
 <tr class="separator:a41a649c0663b765cca8e8da8fd35ea2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad894d7ba0fddebdb1462728692fe8711" id="r_ad894d7ba0fddebdb1462728692fe8711"><td class="memItemLeft" align="right" valign="top"><a id="ad894d7ba0fddebdb1462728692fe8711" name="ad894d7ba0fddebdb1462728692fe8711"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>hlen</b> = LENGTH / 4</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>hlen</b> = <a class="el" href="#adc86279294f46937d914baae4b28bce3">LENGTH</a> / 4</td></tr>
 <tr class="separator:ad894d7ba0fddebdb1462728692fe8711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf3413bdc27dc410cad8c3232c0fb2e2" id="r_aaf3413bdc27dc410cad8c3232c0fb2e2"><td class="memItemLeft" align="right" valign="top"><a id="aaf3413bdc27dc410cad8c3232c0fb2e2" name="aaf3413bdc27dc410cad8c3232c0fb2e2"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>tos</b> = 0</td></tr>
@@ -139,10 +139,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>mf</b> = false</td></
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>offset</b> = 0</td></tr>
 <tr class="separator:a126e0f0c088502a6047cb8fb5cfadf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a924c1c184d9d0cfd068d6ce8d2ab38a5" id="r_a924c1c184d9d0cfd068d6ce8d2ab38a5"><td class="memItemLeft" align="right" valign="top"><a id="a924c1c184d9d0cfd068d6ce8d2ab38a5" name="a924c1c184d9d0cfd068d6ce8d2ab38a5"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ttl</b> = DEFAULT_TTL</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ttl</b> = <a class="el" href="#afac7abb89c4579223c52357bb4c3c7f2">DEFAULT_TTL</a></td></tr>
 <tr class="separator:a924c1c184d9d0cfd068d6ce8d2ab38a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a366a450d548feaea1fe631c9880b72" id="r_a4a366a450d548feaea1fe631c9880b72"><td class="memItemLeft" align="right" valign="top"><a id="a4a366a450d548feaea1fe631c9880b72" name="a4a366a450d548feaea1fe631c9880b72"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>proto</b> = PROTO_TCP</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>proto</b> = <a class="el" href="#a231ba17e45cbe615dcfec555cabd3b57">PROTO_TCP</a></td></tr>
 <tr class="separator:a4a366a450d548feaea1fe631c9880b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6080460c4b34e878dda8c7d96241d3b5" id="r_a6080460c4b34e878dda8c7d96241d3b5"><td class="memItemLeft" align="right" valign="top"><a id="a6080460c4b34e878dda8c7d96241d3b5" name="a6080460c4b34e878dda8c7d96241d3b5"></a>
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>cksum</b> = 0</td></tr>
@@ -156,13 +156,17 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>dst</b> = 0</td><
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:adc86279294f46937d914baae4b28bce3" id="r_adc86279294f46937d914baae4b28bce3"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc86279294f46937d914baae4b28bce3">LENGTH</a></td></tr>
+<tr class="memitem:adc86279294f46937d914baae4b28bce3" id="r_adc86279294f46937d914baae4b28bce3"><td class="memItemLeft" align="right" valign="top"><a id="adc86279294f46937d914baae4b28bce3" name="adc86279294f46937d914baae4b28bce3"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>LENGTH</b> = 20</td></tr>
+<tr class="memdesc:adc86279294f46937d914baae4b28bce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">IPv4 报头长度，不包括选项 <br /></td></tr>
 <tr class="separator:adc86279294f46937d914baae4b28bce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afac7abb89c4579223c52357bb4c3c7f2" id="r_afac7abb89c4579223c52357bb4c3c7f2"><td class="memItemLeft" align="right" valign="top"><a id="afac7abb89c4579223c52357bb4c3c7f2" name="afac7abb89c4579223c52357bb4c3c7f2"></a>
 static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_TTL</b> = 128</td></tr>
+<tr class="memdesc:afac7abb89c4579223c52357bb4c3c7f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认 TTL 值 <br /></td></tr>
 <tr class="separator:afac7abb89c4579223c52357bb4c3c7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231ba17e45cbe615dcfec555cabd3b57" id="r_a231ba17e45cbe615dcfec555cabd3b57"><td class="memItemLeft" align="right" valign="top"><a id="a231ba17e45cbe615dcfec555cabd3b57" name="a231ba17e45cbe615dcfec555cabd3b57"></a>
 static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>PROTO_TCP</b> = 6</td></tr>
+<tr class="memdesc:a231ba17e45cbe615dcfec555cabd3b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP 协议号 <br /></td></tr>
 <tr class="separator:a231ba17e45cbe615dcfec555cabd3b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -185,31 +189,6 @@ static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>P
 <p>计算封装 TCP 段的校验和时需要该值.</p>
 <p>0 7 8 15 16 23 24 31 +-----&mdash;+-----&mdash;+-----&mdash;+-----&mdash;+ | source address | +-----&mdash;+-----&mdash;+-----&mdash;+-----&mdash;+ | destination address | +-----&mdash;+-----&mdash;+-----&mdash;+-----&mdash;+ | zero |protocol| payload length | +-----&mdash;+-----&mdash;+-----&mdash;+-----&mdash;+ </p>
 
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="adc86279294f46937d914baae4b28bce3" name="adc86279294f46937d914baae4b28bce3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc86279294f46937d914baae4b28bce3">&#9670;&#160;</a></span>LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr size_t IPv4Header::LENGTH</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">      20</div>
-</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>

@@ -12,8 +12,6 @@ Transceiver::Transceiver(uint64_t initial_RTO_ms,
       initial_RTO_ms_(initial_RTO_ms) {}
 
 uint64_t Transceiver::sequence_numbers_in_flight() const {
-  //* Get the length of all segments not acked (no bigger than window size)
-  // TODO(iyume): Optimize
   uint64_t res{};
   for (const auto& it : _messages) {
     res += it.second.sequence_length();
@@ -165,7 +163,6 @@ void Transceiver::receive_isn(TCPSenderMessage message,
 }
 
 TCPReceiverMessage Transceiver::send_ack(const Writer& inbound_stream) const {
-  // Your code here.
   auto ackno = receive_isn_;
   if (ackno) {
     ackno.emplace(ackno.value() + 1 + inbound_stream.bytes_pushed() +

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['storage_0',['storage',['../classAddress_1_1Raw.html#af4b018e46b6216cfdd7c62a64ead2c5a',1,'Address::Raw']]]
+  ['raw_5fvalue_5f_0',['raw_value_',['../classWrap32.html#a22335178acb742ed931c79d32b556c8d',1,'Wrap32']]],
+  ['recover_1',['recover',['../structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7',1,'FDRule']]],
+  ['reset_2',['reset',['../structTCPSegment.html#af56555b011f66515dc0463391b5cde1c',1,'TCPSegment']]]
 ];

@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A FD adapter for IPv4 datagrams read from and written to a TUN device.  
+<p>实现传输层和网络层的报文转换  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="tun__adapter_8h_source.html">tun_adapter.h</a>&gt;</code></p>
@@ -88,21 +88,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5af949345e0713a74666b6bf3a21ce61" id="r_a5af949345e0713a74666b6bf3a21ce61"><td class="memItemLeft" align="right" valign="top"><a id="a5af949345e0713a74666b6bf3a21ce61" name="a5af949345e0713a74666b6bf3a21ce61"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TCPOverIPv4OverTunFdAdapter</b> (<a class="el" href="classTunFD.html">TunFD</a> &amp;&amp;tun)</td></tr>
 <tr class="separator:a5af949345e0713a74666b6bf3a21ce61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a426dbebc7dc8fd26f36d18967f84f281" id="r_a426dbebc7dc8fd26f36d18967f84f281"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structTCPSegment.html">TCPSegment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426dbebc7dc8fd26f36d18967f84f281">read</a> ()</td></tr>
+<tr class="memitem:a426dbebc7dc8fd26f36d18967f84f281" id="r_a426dbebc7dc8fd26f36d18967f84f281"><td class="memItemLeft" align="right" valign="top"><a id="a426dbebc7dc8fd26f36d18967f84f281" name="a426dbebc7dc8fd26f36d18967f84f281"></a>
+std::optional&lt; <a class="el" href="structTCPSegment.html">TCPSegment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
+<tr class="memdesc:a426dbebc7dc8fd26f36d18967f84f281"><td class="mdescLeft">&#160;</td><td class="mdescRight">尝试读取并解析包含与当前连接相关的 TCP 数据报的 IPv4 数据报 <br /></td></tr>
 <tr class="separator:a426dbebc7dc8fd26f36d18967f84f281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40607be9ca8daaebfaad0ac3361284c2" id="r_a40607be9ca8daaebfaad0ac3361284c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40607be9ca8daaebfaad0ac3361284c2">write</a> (<a class="el" href="structTCPSegment.html">TCPSegment</a> &amp;seg)</td></tr>
+<tr class="memitem:a40607be9ca8daaebfaad0ac3361284c2" id="r_a40607be9ca8daaebfaad0ac3361284c2"><td class="memItemLeft" align="right" valign="top"><a id="a40607be9ca8daaebfaad0ac3361284c2" name="a40607be9ca8daaebfaad0ac3361284c2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (<a class="el" href="structTCPSegment.html">TCPSegment</a> &amp;seg)</td></tr>
+<tr class="memdesc:a40607be9ca8daaebfaad0ac3361284c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">从 TCP 数据报创建 IPv4 数据报并将其写入 Tun 设备 <br /></td></tr>
 <tr class="separator:a40607be9ca8daaebfaad0ac3361284c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c0be8b5e22de8d8e4a952f81f285a52" id="r_a9c0be8b5e22de8d8e4a952f81f285a52"><td class="memItemLeft" align="right" valign="top"><a id="a9c0be8b5e22de8d8e4a952f81f285a52" name="a9c0be8b5e22de8d8e4a952f81f285a52"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator TunFD &amp;</b> ()</td></tr>
-<tr class="memdesc:a9c0be8b5e22de8d8e4a952f81f285a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the underlying TUN device. <br /></td></tr>
 <tr class="separator:a9c0be8b5e22de8d8e4a952f81f285a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9565b56f808455853bced1cd8a7b0d30" id="r_a9565b56f808455853bced1cd8a7b0d30"><td class="memItemLeft" align="right" valign="top"><a id="a9565b56f808455853bced1cd8a7b0d30" name="a9565b56f808455853bced1cd8a7b0d30"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator const TunFD &amp;</b> () const</td></tr>
-<tr class="memdesc:a9565b56f808455853bced1cd8a7b0d30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the underlying TUN device. <br /></td></tr>
 <tr class="separator:a9565b56f808455853bced1cd8a7b0d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a471b2cde93732631d1e26595984cbced" id="r_a471b2cde93732631d1e26595984cbced"><td class="memItemLeft" align="right" valign="top"><a id="a471b2cde93732631d1e26595984cbced" name="a471b2cde93732631d1e26595984cbced"></a>
 <a class="el" href="classFileDescriptor.html">FileDescriptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>fd</b> ()</td></tr>
-<tr class="memdesc:a471b2cde93732631d1e26595984cbced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access underlying file descriptor. <br /></td></tr>
 <tr class="separator:a471b2cde93732631d1e26595984cbced"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075886b76cb5dcade6cb6324d4b49bd9" id="r_a075886b76cb5dcade6cb6324d4b49bd9"><td class="memItemLeft" align="right" valign="top"><a id="a075886b76cb5dcade6cb6324d4b49bd9" name="a075886b76cb5dcade6cb6324d4b49bd9"></a>
 std::optional&lt; <a class="el" href="structTCPSegment.html">TCPSegment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>unwrap_tcp_in_ip</b> (const <a class="el" href="structIPv4Datagram.html">IPv4Datagram</a> &amp;ip_dgram)</td></tr>
@@ -130,53 +131,8 @@ const <a class="el" href="classFdAdapterConfig.html">FdAdapterConfig</a> &amp;&#
 <tr class="separator:aa7f947992441b7a55488d7af257234db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A FD adapter for IPv4 datagrams read from and written to a TUN device. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a426dbebc7dc8fd26f36d18967f84f281" name="a426dbebc7dc8fd26f36d18967f84f281"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a426dbebc7dc8fd26f36d18967f84f281">&#9670;&#160;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">optional&lt; <a class="el" href="structTCPSegment.html">TCPSegment</a> &gt; TCPOverIPv4OverTunFdAdapter::read </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Attempts to read and parse an IPv4 datagram containing a TCP segment related to the current connection </p>
-
-</div>
-</div>
-<a id="a40607be9ca8daaebfaad0ac3361284c2" name="a40607be9ca8daaebfaad0ac3361284c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40607be9ca8daaebfaad0ac3361284c2">&#9670;&#160;</a></span>write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TCPOverIPv4OverTunFdAdapter::write </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structTCPSegment.html">TCPSegment</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>seg</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Creates an IPv4 datagram from a TCP segment and writes it to the TUN device </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>实现传输层和网络层的报文转换 </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/include/tun/<a class="el" href="tun__adapter_8h_source.html">tun_adapter.h</a></li>
 <li>src/tun/<b>tun_adapter.cpp</b></li>
 </ul>

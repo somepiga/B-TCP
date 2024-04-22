@@ -91,7 +91,7 @@ Inheritance diagram for Socket:</div>
 <area shape="rect" title="各种 Socket 的基类，具体的用法见各派生类" alt="" coords="274,79,339,104"/>
 <area shape="rect" href="classTCPSocket.html" title=" " alt="" coords="5,152,224,192"/>
 <area shape="poly" title=" " alt="" coords="267,112,162,154,160,149,265,107"/>
-<area shape="rect" href="classRawTCPSocket.html" title="A wrapper around TCP sockets." alt="" coords="248,159,365,185"/>
+<area shape="rect" href="classRawTCPSocket.html" title="对[TCP sockets]的封装" alt="" coords="248,159,365,185"/>
 <area shape="poly" title=" " alt="" coords="309,118,309,159,304,159,304,118"/>
 <area shape="rect" href="classTCPSocket.html" title="TCPSocket." alt="" coords="389,159,555,185"/>
 <area shape="poly" title=" " alt="" coords="344,107,449,157,447,162,342,112"/>
@@ -139,6 +139,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (int how
 <tr class="memdesc:ac84bc70e67e9a156c79052e410e6bfa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获得他端 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a>  <br /></td></tr>
 <tr class="separator:ac84bc70e67e9a156c79052e410e6bfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6ed565fddaa9d7ee4904ecc96bb6c0" id="r_afc6ed565fddaa9d7ee4904ecc96bb6c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc6ed565fddaa9d7ee4904ecc96bb6c0">set_reuseaddr</a> ()</td></tr>
+<tr class="memdesc:afc6ed565fddaa9d7ee4904ecc96bb6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过 [SO_REUSEADDR] 允许更快地重用本地地址  <br /></td></tr>
 <tr class="separator:afc6ed565fddaa9d7ee4904ecc96bb6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8869218c5757f756aa2503af4f61777" id="r_ab8869218c5757f756aa2503af4f61777"><td class="memItemLeft" align="right" valign="top"><a id="ab8869218c5757f756aa2503af4f61777" name="ab8869218c5757f756aa2503af4f61777"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>throw_if_error</b> () const</td></tr>
@@ -186,9 +187,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>closed</b> () const</
 <tr class="separator:a1d7e86443d3717059dd206ff6dd6aa2a inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor" id="r_a17cedb6f9f90290d9e9e8b11a0b19992"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>read_count</b> () const</td></tr>
+<tr class="memdesc:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取次数 <br /></td></tr>
 <tr class="separator:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor" id="r_a5969624dacf7135d6630b6bd3412fb93"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>write_count</b> () const</td></tr>
+<tr class="memdesc:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入次数 <br /></td></tr>
 <tr class="separator:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbc8da70d830f97e117b0297b9227059 inherit pub_methods_classFileDescriptor" id="r_adbc8da70d830f97e117b0297b9227059"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>FileDescriptor</b> (const <a class="el" href="classFileDescriptor.html">FileDescriptor</a> &amp;other)=delete</td></tr>
@@ -262,7 +265,7 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>kR
 <p>将 <a class="el" href="classSocket.html" title="各种 Socket 的基类，具体的用法见各派生类">Socket</a> 和一个 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> 绑定 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>is a local <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> to bind </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>绑定的本地地址 </td></tr>
   </table>
   </dd>
 </dl>
@@ -287,7 +290,7 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>kR
 <p>连接到 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>is the peer's <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>对等端的地址 </td></tr>
   </table>
   </dd>
 </dl>
@@ -310,7 +313,7 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>kR
 </div><div class="memdoc">
 
 <p>获得我端 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> </p>
-<dl class="section return"><dt>Returns</dt><dd>the local <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> of the socket </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>socket的本地地址 </dd></dl>
 
 </div>
 </div>
@@ -330,7 +333,7 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>kR
 </div><div class="memdoc">
 
 <p>获得他端 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> </p>
-<dl class="section return"><dt>Returns</dt><dd>the socket's peer's <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>socket对等端地址 </dd></dl>
 
 </div>
 </div>
@@ -348,8 +351,9 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>kR
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Allow local address to be reused sooner via [SO_REUSEADDR](man7::socket)</p>
-<dl class="section note"><dt>Note</dt><dd>Using <code>SO_REUSEADDR</code> may reduce the robustness of your application </dd></dl>
+
+<p>通过 [SO_REUSEADDR] 允许更快地重用本地地址 </p>
+<dl class="section note"><dt>Note</dt><dd>使用“SO_REUSEADDR”可能会降低应用程序的稳健性 </dd></dl>
 
 </div>
 </div>

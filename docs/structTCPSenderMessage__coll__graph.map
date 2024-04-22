@@ -1,5 +1,5 @@
 <map id="TCPSenderMessage" name="TCPSenderMessage">
-<area shape="rect" id="Node000001" title="TCP发送报文格式" alt="" coords="12,93,161,119"/>
+<area shape="rect" id="Node000001" title="TCP报文中关于发送的内容" alt="" coords="12,93,161,119"/>
 <area shape="rect" id="Node000002" href="$classWrap32.html" title="转换绝对序列号和相对序列号 Wrap32 类型表示 32 位无符号整数" alt="" coords="5,5,77,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,43,61,68,78,91,74,95,56,71,46,45"/>
 <area shape="rect" id="Node000003" href="$classBuffer.html" title="std::string 的包装类，用于存放报文信息" alt="" coords="101,5,163,31"/>

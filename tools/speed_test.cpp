@@ -7,11 +7,13 @@
 #include <random>
 
 #include "buffer/stream_buffer.h"
+#include "config/tcp_config.h"
+#include "connect/b_socket.h"
 
 using namespace std;
 using namespace std::chrono;
 
-void speed_test(
+void streamBuffer_speed_test(
     const size_t input_len,    // NOLINT(bugprone-easily-swappable-parameters)
     const size_t capacity,     // NOLINT(bugprone-easily-swappable-parameters)
     const size_t random_seed,  // NOLINT(bugprone-easily-swappable-parameters)
@@ -81,7 +83,7 @@ void speed_test(
        << " Gbit/s.\n";
 }
 
-void program_body() { speed_test(1e7, 32768, 789, 1500, 128); }
+void program_body() { streamBuffer_speed_test(1e7, 32768, 789, 1500, 128); }
 
 int main() {
   try {

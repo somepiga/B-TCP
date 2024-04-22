@@ -171,6 +171,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (int how
 <tr class="memdesc:ac84bc70e67e9a156c79052e410e6bfa3 inherit pub_methods_classSocket"><td class="mdescLeft">&#160;</td><td class="mdescRight">获得他端 <a class="el" href="classAddress.html" title="Wrapper around IPv4 addresses and DNS operations.">Address</a>  <br /></td></tr>
 <tr class="separator:ac84bc70e67e9a156c79052e410e6bfa3 inherit pub_methods_classSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket" id="r_afc6ed565fddaa9d7ee4904ecc96bb6c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#afc6ed565fddaa9d7ee4904ecc96bb6c0">set_reuseaddr</a> ()</td></tr>
+<tr class="memdesc:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过 [SO_REUSEADDR] 允许更快地重用本地地址  <br /></td></tr>
 <tr class="separator:afc6ed565fddaa9d7ee4904ecc96bb6c0 inherit pub_methods_classSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8869218c5757f756aa2503af4f61777 inherit pub_methods_classSocket" id="r_ab8869218c5757f756aa2503af4f61777"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>throw_if_error</b> () const</td></tr>
@@ -218,9 +219,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>closed</b> () const</
 <tr class="separator:a1d7e86443d3717059dd206ff6dd6aa2a inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor" id="r_a17cedb6f9f90290d9e9e8b11a0b19992"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>read_count</b> () const</td></tr>
+<tr class="memdesc:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取次数 <br /></td></tr>
 <tr class="separator:a17cedb6f9f90290d9e9e8b11a0b19992 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor" id="r_a5969624dacf7135d6630b6bd3412fb93"><td class="memItemLeft" align="right" valign="top">
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>write_count</b> () const</td></tr>
+<tr class="memdesc:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入次数 <br /></td></tr>
 <tr class="separator:a5969624dacf7135d6630b6bd3412fb93 inherit pub_methods_classFileDescriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbc8da70d830f97e117b0297b9227059 inherit pub_methods_classFileDescriptor" id="r_adbc8da70d830f97e117b0297b9227059"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>FileDescriptor</b> (const <a class="el" href="classFileDescriptor.html">FileDescriptor</a> &amp;other)=delete</td></tr>
@@ -311,7 +314,7 @@ template&lt;typename AdaptT &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">datagram_interface</td><td>is the underlying interface (e.g. to UDP, IP, or Ethernet) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">datagram_interface</td><td>底层接口(比如网络层，数据链路层) </td></tr>
   </table>
   </dd>
 </dl>
@@ -341,8 +344,8 @@ template&lt;typename AdaptT &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c_tcp</td><td>is the <a class="el" href="classTCPConfig.html" title="一条 TCP 信道的配置内容">TCPConfig</a> for the TCPConnection </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">c_ad</td><td>is the <a class="el" href="classFdAdapterConfig.html" title="适配器的配置内容 包含原ip, port ; 目的ip, port">FdAdapterConfig</a> for the FdAdapter </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c_tcp</td><td>TCP连接配置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c_ad</td><td>FdAdapter配置 </td></tr>
   </table>
   </dd>
 </dl>
@@ -371,8 +374,8 @@ template&lt;typename AdaptT &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c_tcp</td><td>is the <a class="el" href="classTCPConfig.html" title="一条 TCP 信道的配置内容">TCPConfig</a> for the TCPConnection </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">c_ad</td><td>is the <a class="el" href="classFdAdapterConfig.html" title="适配器的配置内容 包含原ip, port ; 目的ip, port">FdAdapterConfig</a> for the FdAdapter </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c_tcp</td><td>TCP连接配置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c_ad</td><td>FdAdapter配置 </td></tr>
   </table>
   </dd>
 </dl>

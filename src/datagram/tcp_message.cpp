@@ -15,7 +15,7 @@ using namespace std;
 void TCPSegment::parse(Parser& parser,
                        uint32_t datagram_layer_pseudo_checksum) {
   {
-    /* verify checksum */
+    /* 验证校验和 */
     Parser parser2 = parser;
     Buffer all_remaining;
     parser2.all_remaining(all_remaining);
@@ -56,7 +56,7 @@ void TCPSegment::parse(Parser& parser,
   parser.integer(udinfo.cksum);
   parser.integer(raw16);  // urgent pointer
 
-  // skip any options or anything extra in the header
+  // 跳过标题中的任何选项或任何额外内容
   if (data_offset < TCPHeaderMinLen) {
     parser.set_error();
   }
@@ -134,7 +134,7 @@ void IPv4Header::parse(Parser& parser) {
 
   parser.remove_prefix(static_cast<uint64_t>(hlen) * 4 - IPv4Header::LENGTH);
 
-  // Verify checksum
+  // 验证校验和
   const uint16_t given_cksum = cksum;
   compute_checksum();
   if (cksum != given_cksum) {
@@ -142,9 +142,9 @@ void IPv4Header::parse(Parser& parser) {
   }
 }
 
-// Serialize the IPv4Header (does not recompute the checksum)
+// 序列化 IPv4Header（不重新计算校验和）
 void IPv4Header::serialize(Serializer& serializer) const {
-  // consistency checks
+  // 一致性检查
   if (ver != 4) {
     throw runtime_error("wrong IP version");
   }

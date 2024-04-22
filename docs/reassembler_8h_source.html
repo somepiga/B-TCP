@@ -99,12 +99,11 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  uint64_t <a class="code hl_function" href="classReassembler.html#a8bb69c1c29fd1aae123923fce29bb275">bytes_pending</a>() <span class="keyword">const</span>;  </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="comment">//* Reassembler throughput: 12.20 Gbit/s</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  std::map&lt;size_t, std::string&gt; _unassembled_strings;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">size_t</span> _last_string_end;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">size_t</span> _last_popped_end;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">void</span> _push_availables(<a class="code hl_class" href="classWriter.html">Writer</a>&amp; output, <span class="keywordtype">size_t</span> index);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  std::map&lt;size_t, std::string&gt; _unassembled_strings;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keywordtype">size_t</span> _last_string_end;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">size_t</span> _last_popped_end;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">void</span> _push_availables(<a class="code hl_class" href="classWriter.html">Writer</a>&amp; output, <span class="keywordtype">size_t</span> index);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
 </div>
 <div class="ttc" id="aclassReassembler_html"><div class="ttname"><a href="classReassembler.html">Reassembler</a></div><div class="ttdoc">流重组器，将乱序收到的包重组后向上层提交</div><div class="ttdef"><b>Definition</b> reassembler.h:11</div></div>
 <div class="ttc" id="aclassReassembler_html_a8bb69c1c29fd1aae123923fce29bb275"><div class="ttname"><a href="classReassembler.html#a8bb69c1c29fd1aae123923fce29bb275">Reassembler::bytes_pending</a></div><div class="ttdeci">uint64_t bytes_pending() const</div><div class="ttdoc">Reassembler 内已经存放多少数据</div><div class="ttdef"><b>Definition</b> reassembler.cpp:67</div></div>

@@ -29,7 +29,7 @@ static inline uint64_t timestamp_ms() {
   return std::chrono::steady_clock::now().time_since_epoch().count() / 1000000;
 }
 
-//! \param[in] condition is a function returning true if loop should continue
+//! \param[in] condition 如果返回true，就应该继续循环
 template <typename AdaptT>
 void TCPSocket<AdaptT>::_tcp_loop(const function<bool()>& condition) {
   auto base_time = timestamp_ms();
@@ -53,9 +53,8 @@ void TCPSocket<AdaptT>::_tcp_loop(const function<bool()>& condition) {
   }
 }
 
-//! \param[in] data_socket_pair is a pair of connected AF_UNIX SOCK_STREAM
-//! sockets \param[in] datagram_interface is the interface for reading and
-//! writing datagrams
+//! \param[in] data_socket_pair 一对连接的 AF_UNIX SOCK_STREAM socket
+//! \param[in] datagram_interface 读写数据报的接口
 template <typename AdaptT>
 TCPSocket<AdaptT>::TCPSocket(
     pair<FileDescriptor, FileDescriptor> data_socket_pair,
@@ -82,7 +81,6 @@ void TCPSocket<AdaptT>::_initialize_TCP(const TCPConfig& config) {
           collect_segments();
         }
 
-        // debugging output:
         if (_thread_data.eof() and
             _tcp.value().transceiver().sequence_numbers_in_flight() == 0 and
             not _fully_acked) {
@@ -107,7 +105,6 @@ void TCPSocket<AdaptT>::_initialize_TCP(const TCPConfig& config) {
           _tcp->outbound_writer().close();
           _outbound_shutdown = true;
 
-          // debugging output:
           cerr << "DEBUG: Outbound stream to "
                << _datagram_adapter.config().destination.to_string()
                << " finished ("
@@ -136,9 +133,6 @@ void TCPSocket<AdaptT>::_initialize_TCP(const TCPConfig& config) {
       "read bytes from inbound stream", _thread_data, Direction::Out,
       [&] {
         Reader& inbound = _tcp->inbound_reader();
-        // Write from the inbound_stream into
-        // the pipe, handling the possibility of a partial
-        // write (i.e., only pop what was actually written).
         if (inbound.bytes_buffered()) {
           const std::string_view buffer = inbound.peek();
           const auto bytes_written = _thread_data.write(buffer);
@@ -149,7 +143,6 @@ void TCPSocket<AdaptT>::_initialize_TCP(const TCPConfig& config) {
           _thread_data.shutdown(SHUT_WR);
           _inbound_shutdown = true;
 
-          // debugging output:
           cerr << "DEBUG: Inbound stream from "
                << _datagram_adapter.config().destination.to_string()
                << " finished "
@@ -176,10 +169,7 @@ void TCPSocket<AdaptT>::_initialize_TCP(const TCPConfig& config) {
       [&] { return not outgoing_segments_.empty(); });
 }
 
-//! \brief Call [socketpair](\ref man2::socketpair) and return connected
-//! Unix-domain sockets of specified type \param[in] type is the type of AF_UNIX
-//! sockets to create (e.g., SOCK_SEQPACKET) \returns a std::pair of connected
-//! sockets
+//! \brief 调用socketpair来返回一对指定type的socket
 static inline pair<FileDescriptor, FileDescriptor> socket_pair_helper(
     const int type) {
   array<int, 2> fds{};
@@ -187,8 +177,7 @@ static inline pair<FileDescriptor, FileDescriptor> socket_pair_helper(
   return {FileDescriptor(fds[0]), FileDescriptor(fds[1])};
 }
 
-//! \param[in] datagram_interface is the underlying interface (e.g. to UDP, IP,
-//! or Ethernet)
+//! \param[in] datagram_interface 底层接口(比如网络层，数据链路层)
 template <typename AdaptT>
 TCPSocket<AdaptT>::TCPSocket(AdaptT&& datagram_interface,
                              EventEpoll&& eventloop)
@@ -200,7 +189,7 @@ TCPSocket<AdaptT>::~TCPSocket() {
   try {
     if (_tcp_thread.joinable()) {
       cerr << "Warning: unclean shutdown of TCPSocket\n";
-      // force the other side to exit
+      // 强制让对方退出
       _abort.store(true);
       _tcp_thread.join();
     }
@@ -219,8 +208,8 @@ void TCPSocket<AdaptT>::wait_until_closed() {
   }
 }
 
-//! \param[in] c_tcp is the TCPConfig for the TCPConnection
-//! \param[in] c_ad is the FdAdapterConfig for the FdAdapter
+//! \param[in] c_tcp TCP连接配置
+//! \param[in] c_ad FdAdapter配置
 template <typename AdaptT>
 void TCPSocket<AdaptT>::connect(const TCPConfig& c_tcp,
                                 const FdAdapterConfig& c_ad) {
@@ -261,8 +250,8 @@ void TCPSocket<AdaptT>::connect(const TCPConfig& c_tcp,
   _tcp_thread = thread(&TCPSocket::_tcp_main, this);
 }
 
-//! \param[in] c_tcp is the TCPConfig for the TCPConnection
-//! \param[in] c_ad is the FdAdapterConfig for the FdAdapter
+//! \param[in] c_tcp TCP连接配置
+//! \param[in] c_ad FdAdapter配置
 template <typename AdaptT>
 void TCPSocket<AdaptT>::listen_and_accept(const TCPConfig& c_tcp,
                                           const FdAdapterConfig& c_ad) {

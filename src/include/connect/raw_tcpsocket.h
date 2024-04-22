@@ -2,21 +2,18 @@
 
 #include "connect/base_socket.h"
 
-//! A wrapper around [TCP sockets](\ref man7::tcp)
+//! 对[TCP sockets]的封装
 class RawTCPSocket : public Socket {
  private:
-  //! \brief Construct from FileDescriptor (used by accept())
-  //! \param[in] fd is the FileDescriptor from which to construct
+  //! \brief 从文件描述符构造 (used by accept())
   explicit RawTCPSocket(FileDescriptor&& fd)
       : Socket(std::move(fd), AF_INET, SOCK_STREAM, IPPROTO_TCP) {}
 
  public:
-  //! Default: construct an unbound, unconnected TCP socket
+  //! 构造一个未绑定、未连接的 TCP 套接字
   RawTCPSocket() : Socket(AF_INET, SOCK_STREAM) {}
 
-  //! Mark a socket as listening for incoming connections
   void listen(int backlog = 16);
 
-  //! Accept a new incoming connection
   RawTCPSocket accept();
 };

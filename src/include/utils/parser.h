@@ -14,12 +14,12 @@
 
 #include "buffer/string_buffer.h"
 
-/**
- * @note <concepts> 中的 unsigned_integral 为C++20新添加内容,如IDE报错,不必理会
- */
-
 class Serializer;
 
+/**
+ * @brief 将序列化数据解析为结构化数据
+ * @note <concepts> 中的 unsigned_integral 为C++20新添加内容,如IDE报错,不必理会
+ */
 class Parser {
   class BufferList {
     uint64_t size_{};
@@ -151,6 +151,9 @@ class Parser {
   void all_remaining(Buffer& out) { input_.dump_all(out); }
 };
 
+/**
+ * @brief 将结构化数据解析为序列化数据
+ */
 class Serializer {
   std::vector<Buffer> output_{};
   std::string buffer_{};

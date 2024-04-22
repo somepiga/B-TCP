@@ -17,7 +17,7 @@ void show_usage(const char* argv0) {
 int main(int argc, char** argv) {
   try {
     if (argc <= 0) {
-      abort();  // For sticklers: don't try to access argv[0] if argc <= 0.
+      abort();
     }
 
     auto args = span(argv, argc);
@@ -30,16 +30,13 @@ int main(int argc, char** argv) {
       return EXIT_FAILURE;
     }
 
-    // in client mode, connect; in server mode, accept exactly one connection
     auto socket = [&] {
       if (server_mode) {
-        RawTCPSocket listening_socket;     // create a TCP socket
-        listening_socket.set_reuseaddr();  // reuse the server's address as soon
-                                           // as the program quits
-        listening_socket.bind({args[2], args[3]});  // bind to specified address
-        listening_socket
-            .listen();  // mark the socket as listening for incoming connections
-        return listening_socket.accept();  // accept exactly one connection
+        RawTCPSocket listening_socket;
+        listening_socket.set_reuseaddr();
+        listening_socket.bind({args[2], args[3]});
+        listening_socket.listen();
+        return listening_socket.accept();
       }
       RawTCPSocket connecting_socket;
       connecting_socket.connect({args[1], args[2]});

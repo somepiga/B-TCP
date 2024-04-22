@@ -87,14 +87,14 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;polling/eventloop.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classEventEpoll.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classEventEpoll.html">EventEpoll</a> : <span class="keyword">public</span> <a class="code hl_class" href="classEventLoop.html">EventLoop</a>&lt;B_epoll&gt; {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  <a class="code hl_class" href="classEventEpoll.html">EventEpoll</a>() : <a class="code hl_class" href="classEventLoop.html">EventLoop&lt;B_epoll&gt;</a>(<a class="code hl_class" href="classB__epoll.html">B_epoll</a>()){};</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>};</div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classEventEpoll.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classEventEpoll.html">EventEpoll</a> : <span class="keyword">public</span> <a class="code hl_class" href="classEventLoop.html">EventLoop</a>&lt;B_epoll&gt; {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <a class="code hl_class" href="classEventEpoll.html">EventEpoll</a>() : <a class="code hl_class" href="classEventLoop.html">EventLoop&lt;B_epoll&gt;</a>(<a class="code hl_class" href="classB__epoll.html">B_epoll</a>()){};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
 </div>
-<div class="ttc" id="aclassB__epoll_html"><div class="ttname"><a href="classB__epoll.html">B_epoll</a></div><div class="ttdef"><b>Definition</b> b_epoll.h:9</div></div>
-<div class="ttc" id="aclassEventEpoll_html"><div class="ttname"><a href="classEventEpoll.html">EventEpoll</a></div><div class="ttdef"><b>Definition</b> eventpolling.h:5</div></div>
+<div class="ttc" id="aclassB__epoll_html"><div class="ttname"><a href="classB__epoll.html">B_epoll</a></div><div class="ttdoc">epoll类，会被加载入EventLoop</div><div class="ttdef"><b>Definition</b> b_epoll.h:12</div></div>
+<div class="ttc" id="aclassEventEpoll_html"><div class="ttname"><a href="classEventEpoll.html">EventEpoll</a></div><div class="ttdoc">加载了 B_epoll 的 EventLoop，作为一个封装好的事件监听类，供 TCPSocket 使用</div><div class="ttdef"><b>Definition</b> eventpolling.h:9</div></div>
 <div class="ttc" id="aclassEventLoop_html"><div class="ttname"><a href="classEventLoop.html">EventLoop</a></div><div class="ttdoc">轮询事件类</div><div class="ttdef"><b>Definition</b> eventloop.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -24,7 +24,7 @@ void bidirectional_stream_copy(Socket& socket) {
   _input.set_blocking(false);
   _output.set_blocking(false);
 
-  // rule 1: read from stdin into outbound byte stream
+  // rule 1: stdin -> outbound
   _eventloop.add_rule(
       "read from stdin into outbound byte stream", _input, Direction::In,
       [&] {
@@ -37,13 +37,13 @@ void bidirectional_stream_copy(Socket& socket) {
         }
       },
       [&] {
-        return (not _outbound.reader().has_error()) and
-               (_outbound.writer().available_capacity() > 0) and
-               (not _inbound.reader().has_error());
+        return (!_outbound.reader().has_error()) &&
+               (_outbound.writer().available_capacity() > 0) &&
+               (!_inbound.reader().has_error());
       },
       [&] { _outbound.writer().close(); });
 
-  // rule 2: read from outbound byte stream into socket
+  // rule 2: outbound -> socket
   _eventloop.add_rule(
       "read from outbound byte stream into socket", socket, Direction::Out,
       [&] {
@@ -56,12 +56,12 @@ void bidirectional_stream_copy(Socket& socket) {
         }
       },
       [&] {
-        return _outbound.reader().bytes_buffered() or
-               (_outbound.reader().is_finished() and not _outbound_shutdown);
+        return _outbound.reader().bytes_buffered() ||
+               (_outbound.reader().is_finished() && !_outbound_shutdown);
       },
       [&] { _outbound.writer().close(); });
 
-  // rule 3: read from socket into inbound byte stream
+  // rule 3: socket -> inbound
   _eventloop.add_rule(
       "read from socket into inbound byte stream", socket, Direction::In,
       [&] {
@@ -74,13 +74,13 @@ void bidirectional_stream_copy(Socket& socket) {
         }
       },
       [&] {
-        return (not _inbound.reader().has_error()) and
-               (_inbound.writer().available_capacity() > 0) and
-               (not _outbound.reader().has_error());
+        return (!_inbound.reader().has_error()) &&
+               (_inbound.writer().available_capacity() > 0) &&
+               (!_outbound.reader().has_error());
       },
       [&] { _inbound.writer().close(); });
 
-  // rule 4: read from inbound byte stream into stdout
+  // rule 4: inbound -> stdout
   _eventloop.add_rule(
       "read from inbound byte stream into stdout", _output, Direction::Out,
       [&] {
@@ -93,8 +93,8 @@ void bidirectional_stream_copy(Socket& socket) {
         }
       },
       [&] {
-        return _inbound.reader().bytes_buffered() or
-               (_inbound.reader().is_finished() and not _inbound_shutdown);
+        return _inbound.reader().bytes_buffered() ||
+               (_inbound.reader().is_finished() && !_inbound_shutdown);
       },
       [&] { _inbound.writer().close(); });
 

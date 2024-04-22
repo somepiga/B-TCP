@@ -79,14 +79,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>关于文件描述符的事件规则  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="rule_8h_source.html">rule.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FDRule:</div>
 <div class="dyncontent">
 <div class="center"><img src="structFDRule__inherit__graph.png" border="0" usemap="#aFDRule_inherit__map" alt="Inheritance graph"/></div>
 <map name="aFDRule_inherit__map" id="aFDRule_inherit__map">
-<area shape="rect" title=" " alt="" coords="14,79,83,104"/>
-<area shape="rect" href="structBasicRule.html" title=" " alt="" coords="5,5,92,31"/>
+<area shape="rect" title="关于文件描述符的事件规则" alt="" coords="14,79,83,104"/>
+<area shape="rect" href="structBasicRule.html" title="事件规则基类" alt="" coords="5,5,92,31"/>
 <area shape="poly" title=" " alt="" coords="51,44,51,79,46,79,46,44"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -95,8 +98,8 @@ Collaboration diagram for FDRule:</div>
 <div class="dyncontent">
 <div class="center"><img src="structFDRule__coll__graph.png" border="0" usemap="#aFDRule_coll__map" alt="Collaboration graph"/></div>
 <map name="aFDRule_coll__map" id="aFDRule_coll__map">
-<area shape="rect" title=" " alt="" coords="75,93,145,119"/>
-<area shape="rect" href="structBasicRule.html" title=" " alt="" coords="5,5,92,31"/>
+<area shape="rect" title="关于文件描述符的事件规则" alt="" coords="75,93,145,119"/>
+<area shape="rect" href="structBasicRule.html" title="事件规则基类" alt="" coords="5,5,92,31"/>
 <area shape="poly" title=" " alt="" coords="67,41,104,91,99,94,63,44"/>
 <area shape="rect" href="classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁" alt="" coords="117,5,229,31"/>
 <area shape="poly" title=" " alt="" coords="158,43,121,94,117,91,154,40"/>
@@ -119,13 +122,17 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abe3c36f06f7b6c755a77e0a33cc48a9d" id="r_abe3c36f06f7b6c755a77e0a33cc48a9d"><td class="memItemLeft" align="right" valign="top"><a id="abe3c36f06f7b6c755a77e0a33cc48a9d" name="abe3c36f06f7b6c755a77e0a33cc48a9d"></a>
 <a class="el" href="classFileDescriptor.html">FileDescriptor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fd</b></td></tr>
-<tr class="memdesc:abe3c36f06f7b6c755a77e0a33cc48a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFileDescriptor.html" title="对文件描述符一些重要内容的包装，使其更简洁">FileDescriptor</a> to monitor for activity. <br /></td></tr>
 <tr class="separator:abe3c36f06f7b6c755a77e0a33cc48a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61c34a858cbc9b7a786f5075e8b1d997" id="r_a61c34a858cbc9b7a786f5075e8b1d997"><td class="memItemLeft" align="right" valign="top">Direction&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61c34a858cbc9b7a786f5075e8b1d997">direction</a></td></tr>
+<tr class="memitem:a61c34a858cbc9b7a786f5075e8b1d997" id="r_a61c34a858cbc9b7a786f5075e8b1d997"><td class="memItemLeft" align="right" valign="top"><a id="a61c34a858cbc9b7a786f5075e8b1d997" name="a61c34a858cbc9b7a786f5075e8b1d997"></a>
+Direction&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
 <tr class="separator:a61c34a858cbc9b7a786f5075e8b1d997"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ff1d41263b0cc0a11a2e89293276397" id="r_a3ff1d41263b0cc0a11a2e89293276397"><td class="memItemLeft" align="right" valign="top">CallbackT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ff1d41263b0cc0a11a2e89293276397">cancel</a></td></tr>
+<tr class="memitem:a3ff1d41263b0cc0a11a2e89293276397" id="r_a3ff1d41263b0cc0a11a2e89293276397"><td class="memItemLeft" align="right" valign="top"><a id="a3ff1d41263b0cc0a11a2e89293276397" name="a3ff1d41263b0cc0a11a2e89293276397"></a>
+CallbackT&#160;</td><td class="memItemRight" valign="bottom"><b>cancel</b></td></tr>
+<tr class="memdesc:a3ff1d41263b0cc0a11a2e89293276397"><td class="mdescLeft">&#160;</td><td class="mdescRight">取消规则时调用的回调 <br /></td></tr>
 <tr class="separator:a3ff1d41263b0cc0a11a2e89293276397"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae96c4486bd588ae3a1f2edb340891a7" id="r_aae96c4486bd588ae3a1f2edb340891a7"><td class="memItemLeft" align="right" valign="top">InterestT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae96c4486bd588ae3a1f2edb340891a7">recover</a></td></tr>
+<tr class="memitem:aae96c4486bd588ae3a1f2edb340891a7" id="r_aae96c4486bd588ae3a1f2edb340891a7"><td class="memItemLeft" align="right" valign="top"><a id="aae96c4486bd588ae3a1f2edb340891a7" name="aae96c4486bd588ae3a1f2edb340891a7"></a>
+InterestT&#160;</td><td class="memItemRight" valign="bottom"><b>recover</b></td></tr>
+<tr class="memdesc:aae96c4486bd588ae3a1f2edb340891a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">当 fd ERR 时调用的回调 <br /></td></tr>
 <tr class="separator:aae96c4486bd588ae3a1f2edb340891a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structBasicRule"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_structBasicRule')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structBasicRule.html">BasicRule</a></td></tr>
 <tr class="memitem:a70e134989e2ee90faca00f1886ffe78f inherit pub_attribs_structBasicRule" id="r_a70e134989e2ee90faca00f1886ffe78f"><td class="memItemLeft" align="right" valign="top">
@@ -142,7 +149,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>cancel_requested</b> 
 <tr class="separator:a2082db67411c3f34b316c58fa29e6eb6 inherit pub_attribs_structBasicRule"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section note"><dt>Note</dt><dd>注意：一个文件描述符可以对应多个 Rule </dd></dl>
+<div class="textblock"><p>关于文件描述符的事件规则 </p>
+<dl class="section note"><dt>Note</dt><dd>注意：一个文件描述符可以对应多个 Rule </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a691e8bc553793ae4f96036c20a95c714" name="a691e8bc553793ae4f96036c20a95c714"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a691e8bc553793ae4f96036c20a95c714">&#9670;&#160;</a></span>service_count()</h2>
@@ -158,54 +166,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>cancel_requested</b> 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the number of times fd has been read or written, depending on the value of Rule::direction.</p>
-<p>This function is used internally by <a class="el" href="classEventLoop.html" title="轮询事件类">EventLoop</a>; you will not need to call it </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3ff1d41263b0cc0a11a2e89293276397" name="a3ff1d41263b0cc0a11a2e89293276397"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ff1d41263b0cc0a11a2e89293276397">&#9670;&#160;</a></span>cancel</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CallbackT FDRule::cancel</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>A callback that is called when the rule is cancelled (e.g. on hangup) </p>
-
-</div>
-</div>
-<a id="a61c34a858cbc9b7a786f5075e8b1d997" name="a61c34a858cbc9b7a786f5075e8b1d997"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c34a858cbc9b7a786f5075e8b1d997">&#9670;&#160;</a></span>direction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Direction FDRule::direction</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Direction::In for reading from fd, Direction::Out for writing to fd. </p>
-
-</div>
-</div>
-<a id="aae96c4486bd588ae3a1f2edb340891a7" name="aae96c4486bd588ae3a1f2edb340891a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae96c4486bd588ae3a1f2edb340891a7">&#9670;&#160;</a></span>recover</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">InterestT FDRule::recover</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>A callback that is called when the fd is ERR. Returns true to keep rule. </p>
+<p>返回 fd 被读取或写入的次数，具体取决于 Rule::direction 的值</p>
+<p>该函数由EventLoop内部使用。你不需要调用它 </p>
 
 </div>
 </div>

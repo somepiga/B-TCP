@@ -16,7 +16,6 @@ class Reassembler {
   uint64_t bytes_pending() const;  //!< Reassembler 内已经存放多少数据
 
  private:
-  //* Reassembler throughput: 12.20 Gbit/s
   std::map<size_t, std::string> _unassembled_strings;
   size_t _last_string_end;
   size_t _last_popped_end;

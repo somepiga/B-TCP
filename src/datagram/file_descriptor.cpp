@@ -37,8 +37,7 @@ T FileDescriptor::CheckSystemCall(std::string_view s_attempt,
   return internal_fd_->CheckSystemCall(s_attempt, return_value);
 }
 
-// fd is the file descriptor number returned by [open(2)](\ref man2::open) or
-// similar
+// fd 是 [open(2)] 或类似返回的文件描述符号
 FileDescriptor::FDWrapper::FDWrapper(int fd) : fd_(fd) {
   if (fd < 0) {
     throw runtime_error("invalid fd number:" + to_string(fd));
@@ -61,26 +60,25 @@ FileDescriptor::FDWrapper::~FDWrapper() {
     }
     close();
   } catch (const exception& e) {
-    // don't throw an exception from the destructor
+    // 不要从析构函数中抛出异常
     cerr << "Exception destructing FDWrapper: " << e.what() << endl;
   }
 }
 
-// fd is the file descriptor number returned by [open(2)](\ref man2::open) or
-// similar
+// fd 是 [open(2)] 或类似返回的文件描述符号
 FileDescriptor::FileDescriptor(int fd)
     : internal_fd_(make_shared<FDWrapper>(fd)) {}
 
-// Private constructor used by duplicate()
+// 借助 duplicate() 的私有构造函数
 FileDescriptor::FileDescriptor(shared_ptr<FDWrapper> other_shared_ptr)
     : internal_fd_(std::move(other_shared_ptr)) {}
 
-// returns a copy of this FileDescriptor
+// 返回此 FileDescriptor 的副本
 FileDescriptor FileDescriptor::duplicate() const {
   return FileDescriptor{internal_fd_};
 }
 
-// buffer is the string to be read into
+// buffer 是要读入的字符串
 void FileDescriptor::read(string& buffer) {
   if (buffer.empty()) {
     buffer.clear();

@@ -38,13 +38,13 @@ class TCPEndpoint {
     if (inbound_stream_.reader().has_error()) {
       return false;
     }
-    return (not outbound_stream_.reader().is_finished()) or
-           (not inbound_stream_.writer().is_closed()) or
+    return (!outbound_stream_.reader().is_finished()) ||
+           (!inbound_stream_.writer().is_closed()) ||
            transceiver_.sequence_numbers_in_flight();
   }
 
   void receive(TCPSegment seg) {
-    if (seg.reset or inbound_reader().has_error()) {
+    if (seg.reset || inbound_reader().has_error()) {
       inbound_stream_.writer().set_error();
       return;
     }
@@ -54,7 +54,7 @@ class TCPEndpoint {
     need_send_ |= (seg.sender_message.sequence_length() > 0);
     const auto our_ackno =
         transceiver_.send_ack(inbound_stream_.writer()).ackno;
-    need_send_ |= (our_ackno.has_value() and
+    need_send_ |= (our_ackno.has_value() &&
                    seg.sender_message.seqno + 1 == our_ackno.value());
 
     transceiver_.receive_isn(std::move(seg.sender_message), reassembler_,
@@ -70,7 +70,7 @@ class TCPEndpoint {
 
     auto sender_msg = transceiver_.maybe_send();
 
-    if (need_send_ and not sender_msg.has_value()) {
+    if (need_send_ && !sender_msg.has_value()) {
       sender_msg = transceiver_.send_empty_message();
     }
 

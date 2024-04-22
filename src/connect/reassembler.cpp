@@ -67,7 +67,7 @@ void Reassembler::insert(uint64_t first_index, std::string data,
 uint64_t Reassembler::bytes_pending() const {
   size_t res{};
   size_t prev_end = _last_popped_end;
-  for (const auto& it : _unassembled_strings) {  // reversed with break?
+  for (const auto& it : _unassembled_strings) {
     if (it.first >= prev_end) {
       res += it.second.size();
       prev_end = it.first + it.second.size();
@@ -81,7 +81,6 @@ uint64_t Reassembler::bytes_pending() const {
   return res;
 }
 
-// Push all available substrings after the given index
 void Reassembler::_push_availables(Writer& output, size_t index) {
   if (index > output.bytes_pushed()) {
     return;

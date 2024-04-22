@@ -99,8 +99,8 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;buffer/string_buffer.h&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">class </span><a class="code hl_class" href="classSerializer.html">Serializer</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">class </span><a class="code hl_class" href="classSerializer.html">Serializer</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classParser.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classParser.html">Parser</a> {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">class </span>BufferList {</div>
@@ -234,68 +234,68 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>};</div>
 </div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="foldopen" id="foldopen00154" data-start="{" data-end="};">
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classSerializer.html">  154</a></span><span class="keyword">class </span><a class="code hl_class" href="classSerializer.html">Serializer</a> {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  std::vector&lt;Buffer&gt; output_{};</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  std::string buffer_{};</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <a class="code hl_class" href="classSerializer.html">Serializer</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classSerializer.html">Serializer</a>(std::string&amp;&amp; buffer) : buffer_(std::move(buffer)) {}</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keywordtype">void</span> integer(<span class="keyword">const</span> T&amp; val) {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keyword">constexpr</span> uint64_t len = <span class="keyword">sizeof</span>(T);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; len; ++i) {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      <span class="keyword">const</span> uint8_t byte_val = val &gt;&gt; ((len - i - 1) * 8);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      buffer_.push_back(byte_val);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  }</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordtype">void</span> buffer(<span class="keyword">const</span> <a class="code hl_class" href="classBuffer.html">Buffer</a>&amp; buf) {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    flush();</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    output_.push_back(buf);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  }</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="keywordtype">void</span> buffer(<span class="keyword">const</span> std::vector&lt;Buffer&gt;&amp; bufs) {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; b : bufs) {</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>      buffer(b);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    }</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  }</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keywordtype">void</span> flush() {</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    output_.emplace_back(std::move(buffer_));</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    buffer_.clear();</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  }</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  std::vector&lt;Buffer&gt; output() {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    flush();</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">return</span> output_;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  }</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>};</div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="};">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classSerializer.html">  157</a></span><span class="keyword">class </span><a class="code hl_class" href="classSerializer.html">Serializer</a> {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  std::vector&lt;Buffer&gt; output_{};</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  std::string buffer_{};</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <a class="code hl_class" href="classSerializer.html">Serializer</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classSerializer.html">Serializer</a>(std::string&amp;&amp; buffer) : buffer_(std::move(buffer)) {}</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="keyword">template</span> &lt;std::<span class="keywordtype">unsigned</span>_<span class="keywordtype">int</span>egral T&gt;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="keywordtype">void</span> integer(<span class="keyword">const</span> T&amp; val) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keyword">constexpr</span> uint64_t len = <span class="keyword">sizeof</span>(T);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; len; ++i) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      <span class="keyword">const</span> uint8_t byte_val = val &gt;&gt; ((len - i - 1) * 8);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      buffer_.push_back(byte_val);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  }</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordtype">void</span> buffer(<span class="keyword">const</span> <a class="code hl_class" href="classBuffer.html">Buffer</a>&amp; buf) {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    flush();</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    output_.push_back(buf);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="keywordtype">void</span> buffer(<span class="keyword">const</span> std::vector&lt;Buffer&gt;&amp; bufs) {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; b : bufs) {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      buffer(b);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  <span class="keywordtype">void</span> flush() {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    output_.emplace_back(std::move(buffer_));</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    buffer_.clear();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  std::vector&lt;Buffer&gt; output() {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    flush();</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> output_;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>};</div>
 </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">// Helper to serialize any object (without constructing a Serializer of the</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">// caller&#39;s own)</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>std::vector&lt;Buffer&gt; serialize(<span class="keyword">const</span> T&amp; obj) {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <a class="code hl_class" href="classSerializer.html">Serializer</a> s;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  obj.serialize(s);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="keywordflow">return</span> s.output();</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">// Helper to parse any object (without constructing a Parser of the caller&#39;s</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">// own). Returns true if successful.</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">typename</span>... Targs&gt;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="keywordtype">bool</span> parse(T&amp; obj, <span class="keyword">const</span> std::vector&lt;Buffer&gt;&amp; buffers, Targs&amp;&amp;... Fargs) {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <a class="code hl_class" href="classParser.html">Parser</a> p{buffers};</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  obj.parse(p, std::forward&lt;Targs&gt;(Fargs)...);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="keywordflow">return</span> not p.has_error();</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">// Helper to serialize any object (without constructing a Serializer of the</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">// caller&#39;s own)</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>std::vector&lt;Buffer&gt; serialize(<span class="keyword">const</span> T&amp; obj) {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <a class="code hl_class" href="classSerializer.html">Serializer</a> s;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  obj.serialize(s);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keywordflow">return</span> s.output();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">// Helper to parse any object (without constructing a Parser of the caller&#39;s</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">// own). Returns true if successful.</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">typename</span>... Targs&gt;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keywordtype">bool</span> parse(T&amp; obj, <span class="keyword">const</span> std::vector&lt;Buffer&gt;&amp; buffers, Targs&amp;&amp;... Fargs) {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <a class="code hl_class" href="classParser.html">Parser</a> p{buffers};</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  obj.parse(p, std::forward&lt;Targs&gt;(Fargs)...);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keywordflow">return</span> not p.has_error();</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>}</div>
 <div class="ttc" id="aclassBuffer_html"><div class="ttname"><a href="classBuffer.html">Buffer</a></div><div class="ttdoc">std::string 的包装类，用于存放报文信息</div><div class="ttdef"><b>Definition</b> string_buffer.h:9</div></div>
-<div class="ttc" id="aclassParser_html"><div class="ttname"><a href="classParser.html">Parser</a></div><div class="ttdef"><b>Definition</b> parser.h:23</div></div>
-<div class="ttc" id="aclassSerializer_html"><div class="ttname"><a href="classSerializer.html">Serializer</a></div><div class="ttdef"><b>Definition</b> parser.h:154</div></div>
+<div class="ttc" id="aclassParser_html"><div class="ttname"><a href="classParser.html">Parser</a></div><div class="ttdoc">将序列化数据解析为结构化数据</div><div class="ttdef"><b>Definition</b> parser.h:23</div></div>
+<div class="ttc" id="aclassSerializer_html"><div class="ttname"><a href="classSerializer.html">Serializer</a></div><div class="ttdoc">将结构化数据解析为序列化数据</div><div class="ttdef"><b>Definition</b> parser.h:157</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

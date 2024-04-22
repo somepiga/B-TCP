@@ -20,6 +20,11 @@ struct RuleCategory {
   std::string name;
 };
 
+/**
+ * @brief 事件规则基类
+ * @param interest 感兴趣的事件
+ * @param callback 回调函数
+ */
 struct BasicRule {
   size_t category_id;
   InterestT interest;
@@ -30,32 +35,30 @@ struct BasicRule {
 };
 
 /**
+ * @brief 关于文件描述符的事件规则
  * @note 注意：一个文件描述符可以对应多个 Rule
  */
 struct FDRule : public BasicRule {
-  FileDescriptor fd;    //!< FileDescriptor to monitor for activity.
-  Direction direction;  //!< Direction::In for reading from fd, Direction::Out
-                        //!< for writing to fd.
-  CallbackT cancel;   //!< A callback that is called when the rule is cancelled
-                      //!< (e.g. on hangup)
-  InterestT recover;  //!< A callback that is called when the fd is ERR.
-                      //!< Returns true to keep rule.
+  FileDescriptor fd;
+  Direction direction;
+  CallbackT cancel;   //!< 取消规则时调用的回调
+  InterestT recover;  //!< 当 fd ERR 时调用的回调
 
   FDRule(BasicRule&& base, FileDescriptor&& s_fd, Direction s_direction,
          CallbackT s_cancel, InterestT s_recover);
 
-  //! Returns the number of times fd has been read or written, depending on
-  //! the value of Rule::direction. \details This function is used internally
-  //! by EventLoop; you will not need to call it
+  //! 返回 fd 被读取或写入的次数，具体取决于 Rule::direction 的值
+  //! \details 该函数由EventLoop内部使用。你不需要调用它
   unsigned int service_count() const;
 };
 
-//! Returned by each call to EventLoop::wait_next_event.
+/**
+ * @brief 每次调用 EventLoop::wait_next_event 时返回
+ */
 enum class Result {
-  Success,  //!< At least one Rule was triggered.
-  Timeout,  //!< No rules were triggered before timeout.
-  Exit      //!< All rules have been canceled or were uninterested; make no
-            //!< further calls to EventLoop::wait_next_event.
+  Success,  //!< 至少触发了一条规则
+  Timeout,  //!< 超时之前没有触发任何规则
+  Exit  //!< 所有规则已被取消或不感兴趣。不再调用 EventLoop::wait_next_event
 };
 
 class RuleHandle {

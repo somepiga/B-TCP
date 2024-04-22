@@ -89,13 +89,13 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_2.png" border="0" usemap="#aB__epoll" alt=""/>
 <map name="aB__epoll" id="aB__epoll">
-<area shape="rect" href="classB__epoll.html" title=" " alt="" coords="5,5,76,31"/>
+<area shape="rect" href="classB__epoll.html" title="epoll类，会被加载入EventLoop" alt="" coords="5,5,76,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" usemap="#aBasicRule" alt=""/>
 <map name="aBasicRule" id="aBasicRule">
-<area shape="rect" href="structBasicRule.html" title=" " alt="" coords="5,5,92,31"/>
-<area shape="rect" href="structFDRule.html" title=" " alt="" coords="140,5,209,31"/>
+<area shape="rect" href="structBasicRule.html" title="事件规则基类" alt="" coords="5,5,92,31"/>
+<area shape="rect" href="structFDRule.html" title="关于文件描述符的事件规则" alt="" coords="140,5,209,31"/>
 <area shape="poly" title=" " alt="" coords="106,15,140,15,140,21,106,21"/>
 </map>
 </td></tr>
@@ -107,14 +107,14 @@ $(function() {
 <tr><td><img src="inherit_graph_5.png" border="0" usemap="#aerror__category" alt=""/>
 <map name="aerror__category" id="aerror__category">
 <area shape="rect" title=" " alt="" coords="5,5,123,31"/>
-<area shape="rect" href="classgai__error__category.html" title="Error category for getaddrinfo and getnameinfo failures." alt="" coords="171,5,315,31"/>
+<area shape="rect" href="classgai__error__category.html" title="getaddrinfo 和 getnameinfo 的错误类别" alt="" coords="171,5,315,31"/>
 <area shape="poly" title=" " alt="" coords="136,15,171,15,171,21,136,21"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_6.png" border="0" usemap="#aEventLoop_3_01B__epoll_01_4" alt=""/>
 <map name="aEventLoop_3_01B__epoll_01_4" id="aEventLoop_3_01B__epoll_01_4">
 <area shape="rect" href="classEventLoop.html" title=" " alt="" coords="5,5,173,31"/>
-<area shape="rect" href="classEventEpoll.html" title=" " alt="" coords="221,5,312,31"/>
+<area shape="rect" href="classEventEpoll.html" title="加载了 B_epoll 的 EventLoop，作为一个封装好的事件监听类，供 TCPSocket 使用" alt="" coords="221,5,312,31"/>
 <area shape="poly" title=" " alt="" coords="187,15,221,15,221,21,187,21"/>
 </map>
 </td></tr>
@@ -137,7 +137,7 @@ $(function() {
 <area shape="poly" title=" " alt="" coords="132,142,166,148,165,153,131,147"/>
 <area shape="rect" href="classTCPSocket.html" title=" " alt="" coords="297,5,516,45"/>
 <area shape="poly" title=" " alt="" coords="239,86,296,56,332,43,333,48,298,61,242,90"/>
-<area shape="rect" href="classRawTCPSocket.html" title="A wrapper around TCP sockets." alt="" coords="348,70,465,95"/>
+<area shape="rect" href="classRawTCPSocket.html" title="对[TCP sockets]的封装" alt="" coords="348,70,465,95"/>
 <area shape="poly" title=" " alt="" coords="253,100,347,87,348,93,254,105"/>
 <area shape="rect" href="classTCPSocket.html" title="TCPSocket." alt="" coords="324,119,489,145"/>
 <area shape="poly" title=" " alt="" coords="254,111,324,119,323,125,254,116"/>
@@ -154,7 +154,7 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_11.png" border="0" usemap="#aIPv4Datagram" alt=""/>
 <map name="aIPv4Datagram" id="aIPv4Datagram">
-<area shape="rect" href="structIPv4Datagram.html" title="TCP数据报" alt="" coords="5,5,120,31"/>
+<area shape="rect" href="structIPv4Datagram.html" title="完整的IPv4报文" alt="" coords="5,5,120,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_12.png" border="0" usemap="#aIPv4Header" alt=""/>
@@ -164,7 +164,7 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_13.png" border="0" usemap="#aParser" alt=""/>
 <map name="aParser" id="aParser">
-<area shape="rect" href="classParser.html" title=" " alt="" coords="5,5,68,31"/>
+<area shape="rect" href="classParser.html" title="将序列化数据解析为结构化数据" alt="" coords="5,5,68,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_14.png" border="0" usemap="#aReassembler" alt=""/>
@@ -184,7 +184,7 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_17.png" border="0" usemap="#aSerializer" alt=""/>
 <map name="aSerializer" id="aSerializer">
-<area shape="rect" href="classSerializer.html" title=" " alt="" coords="5,5,88,31"/>
+<area shape="rect" href="classSerializer.html" title="将结构化数据解析为序列化数据" alt="" coords="5,5,88,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_18.png" border="0" usemap="#astd_1_1system__error" alt=""/>
@@ -217,22 +217,22 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_22.png" border="0" usemap="#aTCPOverIPv4OverTunFdAdapter" alt=""/>
 <map name="aTCPOverIPv4OverTunFdAdapter" id="aTCPOverIPv4OverTunFdAdapter">
-<area shape="rect" href="classTCPOverIPv4OverTunFdAdapter.html" title="A FD adapter for IPv4 datagrams read from and written to a TUN device." alt="" coords="5,5,231,31"/>
+<area shape="rect" href="classTCPOverIPv4OverTunFdAdapter.html" title="实现传输层和网络层的报文转换" alt="" coords="5,5,231,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_23.png" border="0" usemap="#aTCPReceiverMessage" alt=""/>
 <map name="aTCPReceiverMessage" id="aTCPReceiverMessage">
-<area shape="rect" href="structTCPReceiverMessage.html" title="TCP接收报文格式" alt="" coords="5,5,167,31"/>
+<area shape="rect" href="structTCPReceiverMessage.html" title="TCP报头中关于接收的内容" alt="" coords="5,5,167,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_24.png" border="0" usemap="#aTCPSegment" alt=""/>
 <map name="aTCPSegment" id="aTCPSegment">
-<area shape="rect" href="structTCPSegment.html" title=" " alt="" coords="5,5,109,31"/>
+<area shape="rect" href="structTCPSegment.html" title="完整的TCP报文" alt="" coords="5,5,109,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_25.png" border="0" usemap="#aTCPSenderMessage" alt=""/>
 <map name="aTCPSenderMessage" id="aTCPSenderMessage">
-<area shape="rect" href="structTCPSenderMessage.html" title="TCP发送报文格式" alt="" coords="5,5,155,31"/>
+<area shape="rect" href="structTCPSenderMessage.html" title="TCP报文中关于发送的内容" alt="" coords="5,5,155,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_26.png" border="0" usemap="#aTransceiver" alt=""/>
@@ -242,7 +242,7 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_27.png" border="0" usemap="#aUserDatagramInfo" alt=""/>
 <map name="aUserDatagramInfo" id="aUserDatagramInfo">
-<area shape="rect" href="structUserDatagramInfo.html" title=" " alt="" coords="5,5,148,31"/>
+<area shape="rect" href="structUserDatagramInfo.html" title="TCP报头中部分字段内容" alt="" coords="5,5,148,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_28.png" border="0" usemap="#aWrap32" alt=""/>

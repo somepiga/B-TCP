@@ -1,8 +1,5 @@
 #pragma once
 
-// #include "ethernet_header.hh"
-// #include "network_interface.hh"
-// #include "tcp_over_ip.hh"
 #include <optional>
 #include <unordered_map>
 #include <utility>
@@ -11,7 +8,7 @@
 #include "datagram/tcp_message.h"
 #include "tun/tun.h"
 
-//! \brief A FD adapter for IPv4 datagrams read from and written to a TUN device
+//! \brief 实现传输层和网络层的报文转换
 class TCPOverIPv4OverTunFdAdapter {
  private:
   TunFD _tun;
@@ -22,21 +19,16 @@ class TCPOverIPv4OverTunFdAdapter {
  public:
   explicit TCPOverIPv4OverTunFdAdapter(TunFD&& tun) : _tun(std::move(tun)) {}
 
-  //! Attempts to read and parse an IPv4 datagram containing a TCP segment
-  //! related to the current connection
+  //! 尝试读取并解析包含与当前连接相关的 TCP 数据报的 IPv4 数据报
   std::optional<TCPSegment> read();
 
-  //! Creates an IPv4 datagram from a TCP segment and writes it to the TUN
-  //! device
+  //! 从 TCP 数据报创建 IPv4 数据报并将其写入 Tun 设备
   void write(TCPSegment& seg) { _tun.write(serialize(wrap_tcp_in_ip(seg))); }
 
-  //! Access the underlying TUN device
   explicit operator TunFD&() { return _tun; }
 
-  //! Access the underlying TUN device
   explicit operator const TunFD&() const { return _tun; }
 
-  //! Access underlying file descriptor
   FileDescriptor& fd() { return _tun; }
 
   std::optional<TCPSegment> unwrap_tcp_in_ip(const IPv4Datagram& ip_dgram);

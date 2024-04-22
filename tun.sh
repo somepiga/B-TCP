@@ -73,7 +73,7 @@ MODE=$1; shift
 
 # set default argument
 if [ "$#" = "0" ]; then
-    set -- 144 145
+    set -- 100 101
 fi
 
 # execute 'check' before trying to sudo
