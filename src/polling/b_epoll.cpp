@@ -86,16 +86,37 @@ void B_epoll::call(std::list<std::shared_ptr<FDRule>>& _fd_rules) {
   }
 }
 
-void B_epoll::clear() {
+void B_epoll::clear(int fd, int16_t dir) {
+  if (added_fds.count(fd) == 0) {
+    return;
+  }
+  epoll_event ev;
+  ev.data.fd = fd;
+  ev.events = dir;
+  std::cerr << "从epoll和added_fds删除 " << fd << std::endl;
+  if (epoll_ctl(epoll_fd, EPOLL_CTL_DEL, fd, &ev) == -1) {
+    int error_code = errno;
+    std::cerr << "errno: " << error_code
+              << ", 错误信息: " << strerror(error_code) << std::endl;
+    throw std::runtime_error("clear删除失败");
+  }
+  added_fds.erase(fd);
+}
+
+void B_epoll::clear_all() {
+  for (const auto& pair : added_fds) {
+    std::cerr << "fd: " << pair.first << std::endl;
+  }
   for (auto& it : added_fds) {
     epoll_event ev;
     ev.data.fd = it.first;
     ev.events = it.second;
+    std::cerr << "在clear_all中删除 " << it.first << std::endl;
     if (epoll_ctl(epoll_fd, EPOLL_CTL_DEL, it.first, &ev) == -1) {
       int error_code = errno;
       std::cerr << "errno: " << error_code
                 << ", 错误信息: " << strerror(error_code) << std::endl;
-      throw std::runtime_error("删除失败");
+      // throw std::runtime_error("clear_all删除失败");
     }
   }
   added_fds.clear();

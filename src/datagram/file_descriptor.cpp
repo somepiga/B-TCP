@@ -179,13 +179,13 @@ size_t FileDescriptor::write(const vector<string_view>& buffers) {
       ::writev(fd_num(), iovecs.data(), static_cast<int>(iovecs.size())));
   register_write();
 
-  if (bytes_written == 0 and total_size != 0) {
-    throw runtime_error("write returned 0 given non-empty input buffer");
-  }
+  // if (bytes_written == 0 and total_size != 0) {
+  //   throw runtime_error("write returned 0 given non-empty input buffer");
+  // }
 
-  if (bytes_written > static_cast<ssize_t>(total_size)) {
-    throw runtime_error("write wrote more than length of input buffer");
-  }
+  // if (bytes_written > static_cast<ssize_t>(total_size)) {
+  //   throw runtime_error("write wrote more than length of input buffer");
+  // }
 
   return bytes_written;
 }

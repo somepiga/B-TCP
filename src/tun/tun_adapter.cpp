@@ -88,6 +88,9 @@ optional<TCPSegment> TCPOverIPv4OverTunFdAdapter::read() {
   IPv4Datagram ip_dgram;
   const vector<Buffer> buffers = {strs.at(0), strs.at(1)};
   if (parse(ip_dgram, buffers)) {
+    if (_should_drop(false)) {
+      return {};
+    }
     return unwrap_tcp_in_ip(ip_dgram);
   }
   return {};

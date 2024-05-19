@@ -10,7 +10,7 @@
 #include "polling/rule.h"
 
 void bidirectional_stream_copy(Socket& socket) {
-  constexpr size_t buffer_size = 1048576;
+  constexpr size_t buffer_size = 100 * 1024 * 1024;
 
   EventEpoll _eventloop{};
   FileDescriptor _input{STDIN_FILENO};
