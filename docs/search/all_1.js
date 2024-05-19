@@ -1,13 +1,7 @@
 var searchData=
 [
-  ['b_20tcp_0',['B-TCP',['../index.html',1,'']]],
-  ['b_5fepoll_1',['B_epoll',['../classB__epoll.html',1,'']]],
-  ['b_5ftcpsocketepoll_2',['B_TCPSocketEpoll',['../classB__TCPSocketEpoll.html',1,'']]],
-  ['basicrule_3',['BasicRule',['../structBasicRule.html',1,'']]],
-  ['bind_4',['bind',['../classSocket.html#ab45c9389663bd9cbd02afdd87c9611dc',1,'Socket']]],
-  ['bind_5fto_5fdevice_5',['bind_to_device',['../classSocket.html#a6561f2c27c66d445728a02fe7e9dec59',1,'Socket']]],
-  ['buffer_6',['Buffer',['../classBuffer.html',1,'']]],
-  ['bytes_5fbuffered_7',['bytes_buffered',['../classReader.html#ab831b0ed5a03295bb0b27cff0a9fb577',1,'Reader']]],
-  ['bytes_5fpending_8',['bytes_pending',['../classReassembler.html#a8bb69c1c29fd1aae123923fce29bb275',1,'Reassembler']]],
-  ['bytes_5fpopped_9',['bytes_popped',['../classReader.html#a9519865cc6ee28662cf09e97e20516f8',1,'Reader']]]
+  ['accept_0',['accept',['../classRawTCPSocket.html#ae07d6594865be3d7cc2ad54a630a7a17',1,'RawTCPSocket']]],
+  ['active_1',['active',['../classTCPEndpoint.html#a1ff3292cbe7b1c03f5d4d4278c7089c7',1,'TCPEndpoint']]],
+  ['address_2',['Address',['../classAddress.html',1,'Address'],['../classAddress.html#a62346bbd3e185a7b102cab9574be26eb',1,'Address::Address(const std::string &amp;hostname, const std::string &amp;service)'],['../classAddress.html#a605fbf47364d10562e6639282c6804f9',1,'Address::Address(const std::string &amp;ip, std::uint16_t port=0)'],['../classAddress.html#a248970f7bb21a0fa77d63c4daeb39289',1,'Address::Address(const sockaddr *addr, std::size_t size)']]],
+  ['as_3',['as',['../classAddress.html#a670bd1dba3b30a66d4fc6dd994e32253',1,'Address']]]
 ];

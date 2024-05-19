@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['raw_0',['Raw',['../classAddress_1_1Raw.html',1,'Address']]],
-  ['raw_5fvalue_5f_1',['raw_value_',['../classWrap32.html#a22335178acb742ed931c79d32b556c8d',1,'Wrap32']]],
-  ['rawtcpsocket_2',['RawTCPSocket',['../classRawTCPSocket.html',1,'RawTCPSocket'],['../classRawTCPSocket.html#abdc8fa92ce1f19d7a9b5d13531e8ec26',1,'RawTCPSocket::RawTCPSocket()']]],
-  ['read_3',['read',['../classTCPOverIPv4OverTunFdAdapter.html#a426dbebc7dc8fd26f36d18967f84f281',1,'TCPOverIPv4OverTunFdAdapter']]],
-  ['read_5fcount_4',['read_count',['../classFileDescriptor.html#a17cedb6f9f90290d9e9e8b11a0b19992',1,'FileDescriptor']]],
-  ['reader_5',['Reader',['../classReader.html',1,'']]],
-  ['reassembler_6',['Reassembler',['../classReassembler.html',1,'']]],
-  ['recover_7',['recover',['../structFDRule.html#aae96c4486bd588ae3a1f2edb340891a7',1,'FDRule']]],
-  ['reset_8',['reset',['../structTCPSegment.html#af56555b011f66515dc0463391b5cde1c',1,'TCPSegment']]],
-  ['rulecategory_9',['RuleCategory',['../structRuleCategory.html',1,'']]],
-  ['rulehandle_10',['RuleHandle',['../classRuleHandle.html',1,'']]]
+  ['parser_0',['Parser',['../classParser.html',1,'']]],
+  ['peek_1',['peek',['../classReader.html#ae8af968bc9b2e3ee45630ca3adda34f8',1,'Reader']]],
+  ['peer_5faddress_2',['peer_address',['../classSocket.html#ac84bc70e67e9a156c79052e410e6bfa3',1,'Socket']]],
+  ['port_3',['port',['../classAddress.html#ac55e561a5acaf897f592ebf6d2fb4ec7',1,'Address']]],
+  ['proto_5ftcp_4',['PROTO_TCP',['../structIPv4Header.html#a231ba17e45cbe615dcfec555cabd3b57',1,'IPv4Header']]],
+  ['pseudo_5fchecksum_5',['pseudo_checksum',['../structIPv4Header.html#a9a311972ddbbce5398cc9ec16182bc09',1,'IPv4Header']]]
 ];

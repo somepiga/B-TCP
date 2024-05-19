@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['length_0',['LENGTH',['../structIPv4Header.html#adc86279294f46937d914baae4b28bce3',1,'IPv4Header']]],
-  ['listen_1',['listen',['../classRawTCPSocket.html#ae3260b1b8e7dd4a0e44a1059c14e9bc0',1,'RawTCPSocket']]],
-  ['listen_5fand_5faccept_2',['listen_and_accept',['../classTCPSocket.html#a7cad6f79bcd48f1290f779294334bda7',1,'TCPSocket']]],
-  ['local_5faddress_3',['local_address',['../classSocket.html#ac4abb7c7d50f79e7b358f0c8b9e36872',1,'Socket']]]
+  ['internetchecksum_0',['InternetChecksum',['../classInternetChecksum.html',1,'']]],
+  ['ip_1',['ip',['../classAddress.html#ad6bb9947da74feac256fb3d85e1a13d0',1,'Address']]],
+  ['ip_5fport_2',['ip_port',['../classAddress.html#a22d6e18c92ad6c819629c5f9b9839daf',1,'Address']]],
+  ['ipv4_5fnumeric_3',['ipv4_numeric',['../classAddress.html#a838b463e2919fd5fa43cdad946fbc924',1,'Address']]],
+  ['ipv4datagram_4',['IPv4Datagram',['../structIPv4Datagram.html',1,'']]],
+  ['ipv4header_5',['IPv4Header',['../structIPv4Header.html',1,'']]],
+  ['is_5ffinished_6',['is_finished',['../classReader.html#a5f0a5ab62444f3d3b88b1bd22bbd1731',1,'Reader']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['listen_0',['listen',['../classRawTCPSocket.html#ae3260b1b8e7dd4a0e44a1059c14e9bc0',1,'RawTCPSocket']]],
-  ['listen_5fand_5faccept_1',['listen_and_accept',['../classTCPSocket.html#a7cad6f79bcd48f1290f779294334bda7',1,'TCPSocket']]],
-  ['local_5faddress_2',['local_address',['../classSocket.html#ac4abb7c7d50f79e7b358f0c8b9e36872',1,'Socket']]]
+  ['ip_0',['ip',['../classAddress.html#ad6bb9947da74feac256fb3d85e1a13d0',1,'Address']]],
+  ['ip_5fport_1',['ip_port',['../classAddress.html#a22d6e18c92ad6c819629c5f9b9839daf',1,'Address']]],
+  ['ipv4_5fnumeric_2',['ipv4_numeric',['../classAddress.html#a838b463e2919fd5fa43cdad946fbc924',1,'Address']]],
+  ['is_5ffinished_3',['is_finished',['../classReader.html#a5f0a5ab62444f3d3b88b1bd22bbd1731',1,'Reader']]]
 ];

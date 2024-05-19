@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['from_5fipv4_5fnumeric_0',['from_ipv4_numeric',['../classAddress.html#a5fa2d0138a029bf2b41aa146a1a25fba',1,'Address']]]
+  ['connect_0',['connect',['../classTCPSocket.html#a91723c329fcdd9dd8e687d50d10c64fb',1,'TCPSocket::connect()'],['../classSocket.html#a37018cb0609cd98256bd2d2739e7d3c5',1,'Socket::connect()']]]
 ];

@@ -129,10 +129,48 @@ const <a class="el" href="classFdAdapterConfig.html">FdAdapterConfig</a> &amp;&#
 <tr class="memitem:aa7f947992441b7a55488d7af257234db" id="r_aa7f947992441b7a55488d7af257234db"><td class="memItemLeft" align="right" valign="top"><a id="aa7f947992441b7a55488d7af257234db" name="aa7f947992441b7a55488d7af257234db"></a>
 <a class="el" href="classFdAdapterConfig.html">FdAdapterConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>config_mut</b> ()</td></tr>
 <tr class="separator:aa7f947992441b7a55488d7af257234db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd2fe93dc3a7706f345da071cae0eb4" id="r_aedd2fe93dc3a7706f345da071cae0eb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedd2fe93dc3a7706f345da071cae0eb4">_should_drop</a> (bool uplink)</td></tr>
+<tr class="memdesc:aedd2fe93dc3a7706f345da071cae0eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">确定是否删除给定的读取或写入  <br /></td></tr>
+<tr class="separator:aedd2fe93dc3a7706f345da071cae0eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>实现传输层和网络层的报文转换 </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aedd2fe93dc3a7706f345da071cae0eb4" name="aedd2fe93dc3a7706f345da071cae0eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd2fe93dc3a7706f345da071cae0eb4">&#9670;&#160;</a></span>_should_drop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TCPOverIPv4OverTunFdAdapter::_should_drop </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>uplink</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>确定是否删除给定的读取或写入 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">上行链路为“true”时使用上行链路丢失概率，否则使用下行链路丢失概率</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>如果数据包应该被丢弃，返回true </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/include/tun/<a class="el" href="tun__adapter_8h_source.html">tun_adapter.h</a></li>
 <li>src/tun/<b>tun_adapter.cpp</b></li>
 </ul>

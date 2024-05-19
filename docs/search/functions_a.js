@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['peek_0',['peek',['../classReader.html#ae8af968bc9b2e3ee45630ca3adda34f8',1,'Reader']]],
-  ['peer_5faddress_1',['peer_address',['../classSocket.html#ac84bc70e67e9a156c79052e410e6bfa3',1,'Socket']]],
-  ['port_2',['port',['../classAddress.html#ac55e561a5acaf897f592ebf6d2fb4ec7',1,'Address']]],
-  ['pseudo_5fchecksum_3',['pseudo_checksum',['../structIPv4Header.html#a9a311972ddbbce5398cc9ec16182bc09',1,'IPv4Header']]]
+  ['operator_20const_20sockaddr_20_2a_0',['operator const sockaddr *',['../classAddress_1_1Raw.html#a57647baae678240454e89f94069fab12',1,'Address::Raw::operator const sockaddr *()'],['../classAddress.html#a32a354ca80a40b3779ba87d6622290e8',1,'Address::operator const sockaddr *()']]],
+  ['operator_20sockaddr_20_2a_1',['operator sockaddr *',['../classAddress_1_1Raw.html#ac6022a0b616bad48512c2caaab881e4d',1,'Address::Raw']]],
+  ['operator_3d_3d_2',['operator==',['../classAddress.html#a69c16bf4ed6bc8e502a6a65f88ece8a1',1,'Address']]]
 ];

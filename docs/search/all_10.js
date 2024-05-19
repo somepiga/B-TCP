@@ -1,19 +1,13 @@
 var searchData=
 [
-  ['tagged_5ferror_0',['tagged_error',['../classtagged__error.html',1,'']]],
-  ['tcp_1',['B-TCP',['../index.html',1,'']]],
-  ['tcpconfig_2',['TCPConfig',['../classTCPConfig.html',1,'']]],
-  ['tcpendpoint_3',['TCPEndpoint',['../classTCPEndpoint.html',1,'']]],
-  ['tcpoveripv4overtunfdadapter_4',['TCPOverIPv4OverTunFdAdapter',['../classTCPOverIPv4OverTunFdAdapter.html',1,'']]],
-  ['tcpreceivermessage_5',['TCPReceiverMessage',['../structTCPReceiverMessage.html',1,'']]],
-  ['tcpsegment_6',['TCPSegment',['../structTCPSegment.html',1,'']]],
-  ['tcpsendermessage_7',['TCPSenderMessage',['../structTCPSenderMessage.html',1,'']]],
-  ['tcpsocket_8',['TCPSocket',['../classTCPSocket.html',1,'TCPSocket&lt; AdaptT &gt;'],['../classTCPSocket.html#a38c8caa14ca8b261beaa7aacc6d58b38',1,'TCPSocket::TCPSocket()']]],
-  ['tcpsocket_3c_20tcpoveripv4overtunfdadapter_20_3e_9',['TCPSocket&lt; TCPOverIPv4OverTunFdAdapter &gt;',['../classTCPSocket.html',1,'']]],
-  ['throw_5fif_5ferror_10',['throw_if_error',['../classSocket.html#ab8869218c5757f756aa2503af4f61777',1,'Socket']]],
-  ['timeout_5fdflt_11',['TIMEOUT_DFLT',['../classTCPConfig.html#a1f697b46c4c439c3a61c4479d7623889',1,'TCPConfig']]],
-  ['to_5fstring_12',['to_string',['../classAddress.html#a81293a8b94c69fd86fc025e57ce89121',1,'Address']]],
-  ['transceiver_13',['Transceiver',['../classTransceiver.html',1,'']]],
-  ['tunfd_14',['TunFD',['../classTunFD.html',1,'']]],
-  ['tuntapfd_15',['TunTapFD',['../classTunTapFD.html',1,'']]]
+  ['send_5fack_0',['send_ack',['../classTransceiver.html#acb5a70c09a31287784a0070d741212a1',1,'Transceiver']]],
+  ['send_5fempty_5fmessage_1',['send_empty_message',['../classTransceiver.html#acf12a6be26ba784cc082e4f0b437c19a',1,'Transceiver']]],
+  ['serializer_2',['Serializer',['../classSerializer.html',1,'']]],
+  ['service_5fcount_3',['service_count',['../structFDRule.html#a691e8bc553793ae4f96036c20a95c714',1,'FDRule']]],
+  ['set_5freuseaddr_4',['set_reuseaddr',['../classSocket.html#afc6ed565fddaa9d7ee4904ecc96bb6c0',1,'Socket']]],
+  ['shutdown_5',['shutdown',['../classSocket.html#a5baaee8717097e3ca099515dfc88f059',1,'Socket']]],
+  ['size_6',['size',['../classAddress.html#a616505289b7760a728bb673604f44faa',1,'Address']]],
+  ['socket_7',['Socket',['../classSocket.html',1,'Socket'],['../classSocket.html#a3b5cdf77eee933287f446f3848c73f56',1,'Socket::Socket()']]],
+  ['storage_8',['storage',['../classAddress_1_1Raw.html#af4b018e46b6216cfdd7c62a64ead2c5a',1,'Address::Raw']]],
+  ['streambuffer_9',['StreamBuffer',['../classStreamBuffer.html',1,'']]]
 ];

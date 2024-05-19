@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['default_5fcapacity_0',['DEFAULT_CAPACITY',['../classTCPConfig.html#ad22e4e2d008e7227787a1101431b2b18',1,'TCPConfig']]],
-  ['default_5fttl_1',['DEFAULT_TTL',['../structIPv4Header.html#afac7abb89c4579223c52357bb4c3c7f2',1,'IPv4Header']]]
+  ['cancel_0',['cancel',['../structFDRule.html#a3ff1d41263b0cc0a11a2e89293276397',1,'FDRule']]],
+  ['connect_1',['connect',['../classTCPSocket.html#a91723c329fcdd9dd8e687d50d10c64fb',1,'TCPSocket::connect()'],['../classSocket.html#a37018cb0609cd98256bd2d2739e7d3c5',1,'Socket::connect()']]]
 ];

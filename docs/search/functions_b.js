@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['rawtcpsocket_0',['RawTCPSocket',['../classRawTCPSocket.html#abdc8fa92ce1f19d7a9b5d13531e8ec26',1,'RawTCPSocket']]],
-  ['read_1',['read',['../classTCPOverIPv4OverTunFdAdapter.html#a426dbebc7dc8fd26f36d18967f84f281',1,'TCPOverIPv4OverTunFdAdapter']]],
-  ['read_5fcount_2',['read_count',['../classFileDescriptor.html#a17cedb6f9f90290d9e9e8b11a0b19992',1,'FileDescriptor']]]
+  ['peek_0',['peek',['../classReader.html#ae8af968bc9b2e3ee45630ca3adda34f8',1,'Reader']]],
+  ['peer_5faddress_1',['peer_address',['../classSocket.html#ac84bc70e67e9a156c79052e410e6bfa3',1,'Socket']]],
+  ['port_2',['port',['../classAddress.html#ac55e561a5acaf897f592ebf6d2fb4ec7',1,'Address']]],
+  ['pseudo_5fchecksum_3',['pseudo_checksum',['../structIPv4Header.html#a9a311972ddbbce5398cc9ec16182bc09',1,'IPv4Header']]]
 ];

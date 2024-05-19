@@ -93,6 +93,7 @@ std::optional&lt; <a class="el" href="structTCPSenderMessage.html">TCPSenderMess
 <tr class="separator:a8080c39e767fc1e3aa4213f55723c59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf12a6be26ba784cc082e4f0b437c19a" id="r_acf12a6be26ba784cc082e4f0b437c19a"><td class="memItemLeft" align="right" valign="top"><a id="acf12a6be26ba784cc082e4f0b437c19a" name="acf12a6be26ba784cc082e4f0b437c19a"></a>
 <a class="el" href="structTCPSenderMessage.html">TCPSenderMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>send_empty_message</b> () const</td></tr>
+<tr class="memdesc:acf12a6be26ba784cc082e4f0b437c19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送空数据包 <br /></td></tr>
 <tr class="separator:acf12a6be26ba784cc082e4f0b437c19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af151fddab2eb78f8f52172364a7f1d36" id="r_af151fddab2eb78f8f52172364a7f1d36"><td class="memItemLeft" align="right" valign="top"><a id="af151fddab2eb78f8f52172364a7f1d36" name="af151fddab2eb78f8f52172364a7f1d36"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_ack</b> (const <a class="el" href="structTCPReceiverMessage.html">TCPReceiverMessage</a> &amp;msg)</td></tr>
@@ -106,11 +107,11 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>sequence_numbers_
 <tr class="memitem:ad678ae1757de4c1a3b75360c748ea7ba" id="r_ad678ae1757de4c1a3b75360c748ea7ba"><td class="memItemLeft" align="right" valign="top"><a id="ad678ae1757de4c1a3b75360c748ea7ba" name="ad678ae1757de4c1a3b75360c748ea7ba"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>consecutive_retransmissions</b> () const</td></tr>
 <tr class="separator:ad678ae1757de4c1a3b75360c748ea7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf93bb2b3aa88fae3ae33de94ef83205" id="r_acf93bb2b3aa88fae3ae33de94ef83205"><td class="memItemLeft" align="right" valign="top"><a id="acf93bb2b3aa88fae3ae33de94ef83205" name="acf93bb2b3aa88fae3ae33de94ef83205"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_isn</b> (<a class="el" href="structTCPSenderMessage.html">TCPSenderMessage</a> message, <a class="el" href="classReassembler.html">Reassembler</a> &amp;reassembler, <a class="el" href="classWriter.html">Writer</a> &amp;inbound_stream)</td></tr>
+<tr class="memitem:acf93bb2b3aa88fae3ae33de94ef83205" id="r_acf93bb2b3aa88fae3ae33de94ef83205"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf93bb2b3aa88fae3ae33de94ef83205">receive_isn</a> (<a class="el" href="structTCPSenderMessage.html">TCPSenderMessage</a> message, <a class="el" href="classReassembler.html">Reassembler</a> &amp;reassembler, <a class="el" href="classWriter.html">Writer</a> &amp;inbound_stream)</td></tr>
 <tr class="separator:acf93bb2b3aa88fae3ae33de94ef83205"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5a70c09a31287784a0070d741212a1" id="r_acb5a70c09a31287784a0070d741212a1"><td class="memItemLeft" align="right" valign="top"><a id="acb5a70c09a31287784a0070d741212a1" name="acb5a70c09a31287784a0070d741212a1"></a>
 <a class="el" href="structTCPReceiverMessage.html">TCPReceiverMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>send_ack</b> (const <a class="el" href="classWriter.html">Writer</a> &amp;inbound_stream) const</td></tr>
+<tr class="memdesc:acb5a70c09a31287784a0070d741212a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">填写数据包中的ACK和窗口大小 <br /></td></tr>
 <tr class="separator:acb5a70c09a31287784a0070d741212a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a931494d93d8d4a221d1d255c9337888b" id="r_a931494d93d8d4a221d1d255c9337888b"><td class="memItemLeft" align="right" valign="top"><a id="a931494d93d8d4a221d1d255c9337888b" name="a931494d93d8d4a221d1d255c9337888b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Transceiver</b> (uint64_t initial_RTO_ms, std::optional&lt; <a class="el" href="classWrap32.html">Wrap32</a> &gt; fixed_isn)</td></tr>
@@ -118,7 +119,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>receive_isn</b> (<a c
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>收发器 </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acf93bb2b3aa88fae3ae33de94ef83205" name="acf93bb2b3aa88fae3ae33de94ef83205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf93bb2b3aa88fae3ae33de94ef83205">&#9670;&#160;</a></span>receive_isn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Transceiver::receive_isn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTCPSenderMessage.html">TCPSenderMessage</a></td>          <td class="paramname"><span class="paramname"><em>message</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classReassembler.html">Reassembler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>reassembler</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classWriter.html">Writer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>inbound_stream</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>接收数据包</p><ol type="1">
+<li>保存接收数据的ISN</li>
+<li>把内容传给Reassembler </li>
+</ol>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/include/connect/<a class="el" href="transceiver_8h_source.html">transceiver.h</a></li>
 <li>src/connect/<b>transceiver.cpp</b></li>
 </ul>

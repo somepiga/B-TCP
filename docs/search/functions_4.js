@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['has_5ferror_0',['has_error',['../classReader.html#a4a7837d566687d04d7f6776abaa99cf2',1,'Reader']]]
+  ['from_5fipv4_5fnumeric_0',['from_ipv4_numeric',['../classAddress.html#a5fa2d0138a029bf2b41aa146a1a25fba',1,'Address']]]
 ];

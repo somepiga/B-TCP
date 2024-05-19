@@ -102,12 +102,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>tick</b> (uint64_t ms
 <tr class="separator:a339cd88881c4653ca738db1db7cfe57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ab18e4f0bb0f46fd69b41e4c50744e9" id="r_a0ab18e4f0bb0f46fd69b41e4c50744e9"><td class="memItemLeft" align="right" valign="top"><a id="a0ab18e4f0bb0f46fd69b41e4c50744e9" name="a0ab18e4f0bb0f46fd69b41e4c50744e9"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>has_ackno</b> () const</td></tr>
+<tr class="memdesc:a0ab18e4f0bb0f46fd69b41e4c50744e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送的数据包是否包含ACK <br /></td></tr>
 <tr class="separator:a0ab18e4f0bb0f46fd69b41e4c50744e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ff3292cbe7b1c03f5d4d4278c7089c7" id="r_a1ff3292cbe7b1c03f5d4d4278c7089c7"><td class="memItemLeft" align="right" valign="top"><a id="a1ff3292cbe7b1c03f5d4d4278c7089c7" name="a1ff3292cbe7b1c03f5d4d4278c7089c7"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b> () const</td></tr>
+<tr class="memdesc:a1ff3292cbe7b1c03f5d4d4278c7089c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">信道是否活跃(若两端都关闭了,返回false) <br /></td></tr>
 <tr class="separator:a1ff3292cbe7b1c03f5d4d4278c7089c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a281a8f5321021f4a75103aca8b6201a2" id="r_a281a8f5321021f4a75103aca8b6201a2"><td class="memItemLeft" align="right" valign="top"><a id="a281a8f5321021f4a75103aca8b6201a2" name="a281a8f5321021f4a75103aca8b6201a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> (<a class="el" href="structTCPSegment.html">TCPSegment</a> seg)</td></tr>
+<tr class="memitem:a281a8f5321021f4a75103aca8b6201a2" id="r_a281a8f5321021f4a75103aca8b6201a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a281a8f5321021f4a75103aca8b6201a2">receive</a> (<a class="el" href="structTCPSegment.html">TCPSegment</a> seg)</td></tr>
 <tr class="separator:a281a8f5321021f4a75103aca8b6201a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dd207abc300c7840ad825753f579313" id="r_a9dd207abc300c7840ad825753f579313"><td class="memItemLeft" align="right" valign="top"><a id="a9dd207abc300c7840ad825753f579313" name="a9dd207abc300c7840ad825753f579313"></a>
 std::optional&lt; <a class="el" href="structTCPSegment.html">TCPSegment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>maybe_send</b> ()</td></tr>
@@ -118,7 +119,37 @@ const <a class="el" href="classTransceiver.html">Transceiver</a> &amp;&#160;</td
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classTCPSocket.html" title="TCPSocket.">TCPSocket</a> 的一端 </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a281a8f5321021f4a75103aca8b6201a2" name="a281a8f5321021f4a75103aca8b6201a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281a8f5321021f4a75103aca8b6201a2">&#9670;&#160;</a></span>receive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPEndpoint::receive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structTCPSegment.html">TCPSegment</a></td>          <td class="paramname"><span class="paramname"><em>seg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>接收数据</p><ol type="1">
+<li>确认数据包中的ACK(如果有的话)</li>
+<li>把内容存到inbound_stream_中 </li>
+</ol>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/include/connect/<a class="el" href="tcp__endpoint_8h_source.html">tcp_endpoint.h</a></li>
 </ul>
 </div><!-- contents -->
